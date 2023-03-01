@@ -1,1 +1,1 @@
-console.log("Hercule edited");
+console.log("  edited");
