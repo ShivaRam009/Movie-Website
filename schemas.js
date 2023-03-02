@@ -63,4 +63,34 @@ const user = new mongoose.Schema({
     profilepic:String
 })
 
+// const movie = new mongoose.Schema({
+//     name:{
+//         type:String,
+//         required:True
+//     },
+//     release:{
+//         type:Date,
+//         required:True
+//     },
+//     description:{
+//         type:String,
+//         required:True
+//     },
+//     genres:{
+//         type:Array
+//     },
+//     avgRating:{
+//         type:Number
+//     },
+//     ratings:{
+//         type:Array
+//     },
+//     poster:String,
+//     likers:Array,
+//     reviews:Array,
+//     cast:Array,
+//     crew:Array
+
+// })
+
 module.exports = mongoose.model('User', user);
