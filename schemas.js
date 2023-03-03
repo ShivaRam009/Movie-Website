@@ -27,11 +27,19 @@ const user = new mongoose.Schema({
         type:Array,
         default:[this.username]
     },
+    number_of_followings:{
+        type:Number,
+        default:0
+    },
     followers:{
         type:Array,
         default:[]
     },
-    likes:{
+    number_of_followers:{
+        type:Number,
+        default:0
+    },
+    movies_liked:{
         type:Array,
         default:[]
     },
@@ -52,6 +60,10 @@ const user = new mongoose.Schema({
         type:Array,
         default:[]
     },
+    reviews_liked:{
+        type:Array,
+        default:[]
+    },
     watchlist:{
         type:Array,
         default:[]
@@ -60,37 +72,83 @@ const user = new mongoose.Schema({
         type:Array,
         default:[]
     },
+    favorite_films:{
+        type:Array,
+    },
     profilepic:String
 })
 
-// const movie = new mongoose.Schema({
-//     name:{
-//         type:String,
-//         required:True
-//     },
-//     release:{
-//         type:Date,
-//         required:True
-//     },
-//     description:{
-//         type:String,
-//         required:True
-//     },
-//     genres:{
-//         type:Array
-//     },
-//     avgRating:{
-//         type:Number
-//     },
-//     ratings:{
-//         type:Array
-//     },
-//     poster:String,
-//     likers:Array,
-//     reviews:Array,
-//     cast:Array,
-//     crew:Array
+const movie = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    release:{
+        type:Date,
+    },
+    description:{
+        type:String,
+    },
+    genres:{
+        type:String
+    },
+    avgRating:{
+        type:Number
+    },
+    ratings:{
+        type:Array,
+        default:[]
+    },
+    poster:String,
+    likers:{
+        type:Array,
+        default:[]
+    },
+    likes:{
+        type:Number,
+        default:0
+    },
+    reviews:{
+        type:Array,
+        default:[]
+    },
+    cast:{
+        type:Array,
+        default:[]
+    },
+    crew:{
+        type:Array,
+        default:[]
+    },
+    country:String,
+    language:String,
+    type:String,
+    seasons:Number
+})
 
-// })
+const review = new mongoose.Schema({
+    user:{
+        type:mongoose.Types.ObjectId,
+        required:true
+    },
+    movie:{
+        type:mongoose.Types.ObjectId,
+        required:true
+    },
+    comments:{
+        type:Array,
+        default:[]
+    },
+    likers:{
+        type:Array,
+        default:[]
+    },
+    likes:{
+        type:Number,
+        default:0
+    }
+})
 
 module.exports = mongoose.model('User', user);
+module.exports = mongoose.model('Movie', movie);
+module.exports = mongoose.model('Review', review);
