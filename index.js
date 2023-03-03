@@ -17,6 +17,8 @@ app.post("/addUser",(req,res)=>{
 
     queries.addUser(userData).then(response=>{
         res.send(response)
+    }).catch(err=>{
+        res.send(err)
     })
 })
 

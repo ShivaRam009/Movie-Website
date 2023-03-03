@@ -9,6 +9,7 @@ mongoose.set("strictQuery", false);
 const User = mongoose.model("User",schemas.user)
 
 async function addUser(userData){
+    
     const newUser = new User(userData)
     const userExists = await User.findOne({username:newUser.username})
     if(userExists==null){
@@ -25,6 +26,7 @@ async function addUser(userData){
     else{
         return "Provide a unique username"
     }
+    
 }
 
 module.exports.addUser = addUser
