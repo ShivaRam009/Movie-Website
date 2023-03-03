@@ -81,7 +81,7 @@ const user = new mongoose.Schema({
 const movie = new mongoose.Schema({
     name:{
         type:String,
-        required:tgit rue
+        required:true
     },
     release:{
         type:Date,
