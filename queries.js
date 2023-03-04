@@ -28,17 +28,22 @@ async function addUser(userData){
     }
     
 }
-async function deleteuserdata(userData){
-    const newUser = new User(userData)
-    const userExists = await User.findOne({username:newUser.username})
-    if(userExists==null){
-        return "user not found"
-    }
-    else{
-        await User.deleteOne({username:deleteuser.username})
-        return "User deleted"
-    }
+async function deleteUser(username){
+    try{
+        const user = await User.findOne({"username":username})
+        if(user!=null){
+            await User.deleteOne({"username":username})
+            return "User deleted"
+        }
+        else{
+            return "User not found"
+        }
         
+    }
+    catch(e){
+        return e.mesage
+    }
+    
 } 
-module.exports.deleteuserdata=deleteuserdata
+module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
