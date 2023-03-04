@@ -8,6 +8,8 @@ mongoose.set("strictQuery", false);
 
 const User = mongoose.model("User",schemas.user)
 
+const Movie=mongoose.model("Movie",schemas.movie)
+
 async function addUser(userData){
     
     const newUser = new User(userData)
@@ -29,4 +31,7 @@ async function addUser(userData){
     
 }
 
+
 module.exports.addUser = addUser
+
+
