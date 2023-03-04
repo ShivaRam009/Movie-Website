@@ -1,3 +1,4 @@
+
 const schemas = require('./schemas.js')
 const queries = require('./queries.js')
 
@@ -23,6 +24,14 @@ app.post("/addUser",(req,res)=>{
     })
 })
 
+app.get("/getMovie",(req,res)=>{
+    url="https://www.omdbapi.com/?t=batman&apikey=20284f8e"
+
+    fetch(url)
+	.then(res => res.json())
+	.then(json => console.log(json))
+	.catch(err => console.error('error:' + err));
+})
 
 //delete methods
 app.delete("/deleteUser/:username",(req,res)=>{
