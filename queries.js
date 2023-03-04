@@ -29,9 +29,16 @@ async function addUser(userData){
     
 }
 async function deleteuserdata(userData){
-    const deleteuser=new User(userData)
+    const newUser = new User(userData)
+    const userExists = await User.findOne({username:newUser.username})
+    if(userExists==null){
+        return "user not found"
+    }
+    else{
         await User.deleteOne({username:deleteuser.username})
         return "User deleted"
+    }
+        
 } 
 module.exports.deleteuserdata=deleteuserdata
 module.exports.addUser = addUser

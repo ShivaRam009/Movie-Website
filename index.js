@@ -17,7 +17,7 @@ app.post("/addUser",(req,res)=>{
     userData=req.body 
 
     queries.addUser(userData).then(response=>{
-        res.send("user deleted")
+        res.send(response)
     }).catch(err=>{
         res.send(err)
     })
