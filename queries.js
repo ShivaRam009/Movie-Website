@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 mongoose.set("strictQuery", false);
 
 const User = mongoose.model("User",schemas.user)
+const Movie = mongoose.model("Movie",schemas.movie)
 
 async function addUser(userData){
     
@@ -45,5 +46,49 @@ async function deleteUser(username){
     }
     
 } 
+
+async function addMovie(imdbID){
+    url=`https://www.omdbapi.com/?i=${imdbID}&apikey=20284f8e`
+    console.log(url)
+
+    movieData = await fetch(url)
+	.then(res => res.json())
+	.then(json => {
+        return json
+    })
+	.catch(err => console.error('error:' + err));
+    
+    body={
+        "name":movieData.Title,
+        "release":movieData.Released,
+        "description":movieData.Plot,
+        "genres":movieData.Genre,
+        "poster":movieData.Poster,
+        "cast":movieData.Actors,
+        "directors":movieData.Director,
+        "writers":movieData.Writer,
+        "country":movieData.Country,
+        "language":movieData.Language,
+        "type":movieData.Type,
+        "imdbID":movieData.imdbID,
+        "seasons":movieData.totalSeasons
+    }
+
+    const newMovie = new Movie(body)
+    const movieExists = await Movie.findOne({"imdbID":newMovie.imdbID})
+
+    if(movieExists==null){
+        newMovie.save()
+        return "Movie added"
+    }
+    else{
+        return "Movie exists"
+    }
+
+    
+
+}
+
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
+module.exports.addMovie = addMovie
