@@ -4,7 +4,7 @@ const queries = require('./queries.js')
 const express = require('express')
 const mongoose = require('mongoose')
 const { response } = require('express')
-const port=8000
+const port=9000
 const app = express()
 app.use(express.json())
 
@@ -17,17 +17,18 @@ app.post("/addUser",(req,res)=>{
     userData=req.body 
 
     queries.addUser(userData).then(response=>{
-        res.send("user deleted")
+        res.send("user added")
     }).catch(err=>{
         res.send(err)
     })
 })
-app.delete("/deleteUser",(req,res)=>{
-    userData=req.body
-    queries.deleteuserdata(userData).then(response=>{
-        res.send(response)
-    }).catch(err=>{
-        res.send(err)
+
+
+//delete methods
+app.delete("/deleteUser/:username",(req,res)=>{
+    username=req.params.username
+    queries.deleteUser(username).then(response=>{
+        res.send({"message":response})
     })
 })
 
