@@ -30,8 +30,24 @@ async function addUser(userData){
     }
     
 }
-
-
+async function deleteUser(username){
+    try{
+        const user = await User.findOne({"username":username})
+        if(user!=null){
+            await User.deleteOne({"username":username})
+            return "User deleted"
+        }
+        else{
+            return "User not found"
+        }
+        
+    }
+    catch(e){
+        return e.mesage
+    }
+    
+} 
+module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 
 
