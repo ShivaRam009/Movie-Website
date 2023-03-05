@@ -157,7 +157,7 @@ async function likes(movieid,username){
     }
     if(user==null){
         return "no user found"
-    }    
+    }
 }
 
 async function watchList(movieid,username){
@@ -176,29 +176,59 @@ async function watchList(movieid,username){
     }
     
 }
-
-async function rateMovie(username,movieID,rating){
-    const user = await User.findOne({"username":username})
-    const movie = await Movie.findById(movieID)
-    console.log(user)
-
-    for(let i of movie.ratings){
-        if(i.username==user.username){
-            return "User already rated the movie"
+ 
+async function followUser(username1,username2){   //user 1 following user2
+    const user1=await User.findOne({"username":username1})
+    const user2=await User.findOne({"username":username2})
+    if(user1!=null && user2!=null){
+        var index=user1.following.indexOf(user2.username)
+        if(index==-1)
+        {
+            user1.following.push(user2.username)
+            user2.followers.push(user1.username)
+            user1.number_of_followings+=1
+            user2.number_of_followers+=1
+            user1.save()
+            user2.save()
+            return `${user1.username} following ${user2.username}`
+        }
+        else{
+            return `Already following`
         }
     }
-    if(movie.ratings.length==0){sumOfRatings=0}
-    else{
-    sumOfRatings=movie.avgRating*movie.ratings.length
+    else if(user1==null){
+        return "no user found"
     }
-    movie.avgRating=(sumOfRatings+rating)/(movie.ratings.length+1)
+    else if(user2==null){
+        return "no user found"
+    }
+}
 
-    movie.ratings.push({"username":user.username,"rating":rating})
-    user.ratings.push({"movie":movieId,"rating":rating})
 
-    user.save()
-    movie.save()
-    return {"Updated Entries":[user,movie]}
+
+
+
+async function unfollowuser(username_1,username_2){//username 1 unfollow username2
+    const username1=await User.findOne({"username":username_1})
+    const username2=await User.findOne({"username":username_2})
+    
+    if(username1!=null && username2!=null){
+        var index=username1.following.indexOf(username2.username)
+        if(index==-1){
+            return "user does not exist in following list"
+        }
+        username1.following.splice(index,1)
+        username1.number_of_followings=username1.number_of_followings-1
+        var index=username2.followers.indexOf(username1.username)
+        username2.followers.splice(index,1)
+        username2.number_of_followers=username2.number_of_followers-1
+        username1.save()
+        username2.save()
+        return username1.username+" unfollowed "+username2.username
+    }
+    if(username1==null||username2==null){
+        return "user not found"
+    }
 }
 
 module.exports.getUser=getUser
@@ -210,4 +240,5 @@ module.exports.getMoviebyId=getMoviebyId
 module.exports.addReview=addReview
 module.exports.likes=likes
 module.exports.watchList=watchList
-module.exports.rateMovie=rateMovie
+module.exports.unfollowuser=unfollowuser
+module.exports.followUser=followUser
