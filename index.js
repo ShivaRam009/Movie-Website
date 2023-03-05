@@ -118,6 +118,19 @@ app.post("/watchlist/:movieid/:username",(req,res)=>{
         res.send(response)
     })
 })
+
+
+app.put("/followUser/:user1/:user2",(req,res)=>{
+    user1=req.params.user1
+    user2=req.params.user2
+    queries.followUser(user1,user2).then(response=>{
+        if(response=="no user found"){
+            res.send({"message":response})
+        }
+        res.send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
