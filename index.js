@@ -94,6 +94,8 @@ app.post("/addReview/:userId/:movieId",(req,res)=>{
     })
 })
 
+
+
 app.post("/likes/:movieid/:username",(req,res)=>{
     id=req.params.movieid
     username=req.params.username
@@ -104,6 +106,7 @@ app.post("/likes/:movieid/:username",(req,res)=>{
         res.send(response)
     })
 })
+
 
 app.post("/watchlist/:movieid/:username",(req,res)=>{
     id=req.params.movieid
@@ -117,16 +120,17 @@ app.post("/watchlist/:movieid/:username",(req,res)=>{
 })
 
 
-app.put("/unFollowUser/:username1/:username2",(req,res)=>{
-    user1=req.params.username1
-    user2=req.params.username2
-    queries.unfollowuser(user1,user2).then(response=>{
-        if(response=="user not found"||response=="user does not exist in followers list"){
+app.put("/followUser/:user1/:user2",(req,res)=>{
+    user1=req.params.user1
+    user2=req.params.user2
+    queries.followUser(user1,user2).then(response=>{
+        if(response=="no user found"){
             res.send({"message":response})
         }
         res.send(response)
     })
 })
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
