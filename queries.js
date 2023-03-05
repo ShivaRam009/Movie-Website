@@ -93,11 +93,21 @@ async function addMovie(imdbID){
     else{
         return "Movie exists"
     }
-
-    
-
 }
+
+async function getMovieByFullName(name){
+    const movie = await Movie.findOne({"name":name})
+
+    if(movie==null){
+        return "Can't find movie"
+    }
+    else{
+        return movie
+    }
+}
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 module.exports.addMovie = addMovie
+module.exports.getMovieByFullName = getMovieByFullName

@@ -25,7 +25,7 @@ const user = new mongoose.Schema({
     bio:String,
     following:{
         type:Array,
-        default:[this.username]
+        default:[]
     },
     number_of_followings:{
         type:Number,
