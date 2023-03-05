@@ -295,10 +295,6 @@ async function likeReview(username,reviewId){
 
 
 
-
-
-
-
 async function unfollowuser(username_1,username_2){//username 1 unfollow username2
     const username1=await User.findOne({"username":username_1})
     const username2=await User.findOne({"username":username_2})
@@ -346,6 +342,13 @@ async function rateMovie(username,movieID,rating){
     return {"Updated Entries":[user,movie]}
 }
 
+
+
+
+
+
+
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
@@ -358,3 +361,7 @@ module.exports.watchList=watchList
 module.exports.unfollowuser=unfollowuser
 module.exports.followUser=followUser
 module.exports.rateMovie=rateMovie
+module.exports.addCommentOnReview=addCommentOnReview
+module.exports.addToFaves=addToFaves
+module.exports.removeFromFaves=removeFromFaves
+module.exports.likeReview=likeReview
