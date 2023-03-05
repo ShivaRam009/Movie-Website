@@ -10,7 +10,6 @@ const User = mongoose.model("User",schemas.user)
 const Movie = mongoose.model("Movie",schemas.movie)
 
 async function addUser(userData){
-    
     const newUser = new User(userData)
     const userExists = await User.findOne({username:newUser.username})
     if(userExists==null){
@@ -42,7 +41,7 @@ async function deleteUser(username){
         
     }
     catch(e){
-        return e.mesage
+        return e.message
     }
     
 } 

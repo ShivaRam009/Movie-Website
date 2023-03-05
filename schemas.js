@@ -140,6 +140,10 @@ const review = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         required:true
     },
+    review:{
+        type:String,
+        required:true
+    },
     comments:{
         type:Array,
         default:[]
