@@ -25,13 +25,11 @@ app.post("/addUser",(req,res)=>{
     })
 })
 
-app.get("/getMovie",(req,res)=>{
-    url="https://www.omdbapi.com/?t=batman&apikey=20284f8e"
-
-    fetch(url)
-	.then(res => res.json())
-	.then(json => console.log(json))
-	.catch(err => console.error('error:' + err));
+app.get("/addMovie/:imdbID",(req,res)=>{
+    imdbID=req.params.imdbID
+    queries.addMovie(imdbID).then(response=>{
+        res.send(response)
+    })
 })
 
 //delete methods
