@@ -204,6 +204,97 @@ async function followUser(username1,username2){   //user 1 following user2
     }
 }
 
+async function addCommentOnReview(username,reviewId,comment){
+    const user=await User.findOne({"username":username})
+    const review=await Review.findById(reviewId)
+    if(user!=null && review!=null)
+    {
+        user.comments.push({"reviewId":reviewId,"comment":comment})
+        review.comments.push({"username":username,"comment":comment})
+        user.save()
+        review.save()
+        return {"updated entries":[user,review]}
+    }
+    else if(user==null){
+        return "no user found"
+    }
+    else if(review==null)
+    {
+        return "no review found"
+    }
+}
+
+async function addToFaves(username,movieId){
+    const user=await User.findOne({"username":username})
+    const movie=await Movie.findById(movieId)
+    if(user==null){
+        return "no user found"
+    }
+    if(movie==null){
+        return "no movie found"
+    }
+    if(user.favorite_films.length<5)
+    {
+        if(user.favorite_films.includes(movieId))
+        {
+            return "Movie is already in the list"
+        }
+        user.favorite_films.push(movieId)
+        user.save()
+        return {"updated entries": [user]}
+    }
+    return "List is Full"
+}
+
+async function removeFromFaves(username,movieId){
+    const user=await User.findOne({"username":username})
+    const movie=await Movie.findById(movieId)
+    if(user==null){
+        return "no user found"
+    }
+    if(movie==null){
+        return "no movie found"
+    }
+    if(user.favorite_films.length>0)
+    {
+        if(user.favorite_films.includes(movieId))
+        {
+            index=user.favorite_films.indexOf(movieId)
+            user.favorite_films.splice(index,1)
+            user.save()
+            return {"updated entries": [user]}
+        }
+        return "Not in list"
+    }
+    return "List is Empty"
+}
+
+async function likeReview(username,reviewId){
+    const user=await User.findOne({"username":username})
+    const review=await Review.findById(reviewId)
+    if(user!=null && review!=null)
+    {
+        if(review.likers.includes(username)){
+            return "Already liked the post"
+        }
+        user.reviews_liked.push(reviewId)
+        review.likers.push(username)
+        review.likes+=1
+        user.save()
+        review.save()
+        return {"updated entries":[user,review]}
+    }
+    else if(user==null){
+        return "no user found"
+    }
+    else if(review==null)
+    {
+        return "no review found"
+    }
+}
+
+
+
 
 
 
@@ -218,3 +309,7 @@ module.exports.addReview=addReview
 module.exports.likes=likes
 module.exports.watchList=watchList
 module.exports.followUser=followUser
+module.exports.addCommentOnReview=addCommentOnReview
+module.exports.addToFaves=addToFaves
+module.exports.removeFromFaves=removeFromFaves
+module.exports.likeReview=likeReview

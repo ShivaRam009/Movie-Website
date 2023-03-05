@@ -131,6 +131,40 @@ app.put("/followUser/:user1/:user2",(req,res)=>{
     })
 })
 
+app.post("/addComment/:username/:reviewId",(req,res)=>{
+    username=req.params.username
+    reviewId=req.params.reviewId;
+    comment=req.body["comment"]
+    queries.addCommentOnReview(username,reviewId,comment).then(response=>{
+        res.send({"message":response})
+    })
+})
+
+app.put("/addToFaves/:username/:movieId",(req,res)=>{
+    username=req.params.username
+    movieId=req.params.movieId
+    queries.addToFaves(username,movieId).then(response=>{
+        res.send({"message":response})
+    })
+})
+
+app.put("/removeFromFaves/:username/:movieId",(req,res)=>{
+    username=req.params.username
+    movieId=req.params.movieId
+    queries.removeFromFaves(username,movieId).then(response=>{
+        res.send({"message":response})
+    })
+})
+
+app.put("/likeReview/:username/:reviewId",(req,res)=>{
+    username=req.params.username
+    reviewId=req.params.reviewId
+    queries.likeReview(username,reviewId).then(response=>{
+        res.send({"message":response})
+    })
+})
+
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
