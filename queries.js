@@ -176,6 +176,37 @@ async function watchList(movieid,username){
     }
     
 }
+ 
+async function followUser(username1,username2){   //user 1 following user2
+    const user1=await User.findOne({"username":username1})
+    const user2=await User.findOne({"username":username2})
+    if(user1!=null && user2!=null){
+        var index=user1.following.indexOf(user2.username)
+        if(index==-1)
+        {
+            user1.following.push(user2.username)
+            user2.followers.push(user1.username)
+            user1.number_of_followings+=1
+            user2.number_of_followers+=1
+            user1.save()
+            user2.save()
+            return `${user1.username} following ${user2.username}`
+        }
+        else{
+            return `Already following`
+        }
+    }
+    else if(user1==null){
+        return "no user found"
+    }
+    else if(user2==null){
+        return "no user found"
+    }
+}
+
+
+
+
 
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
@@ -186,3 +217,4 @@ module.exports.getMoviebyId=getMoviebyId
 module.exports.addReview=addReview
 module.exports.likes=likes
 module.exports.watchList=watchList
+module.exports.followUser=followUser
