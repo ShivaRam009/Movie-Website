@@ -115,6 +115,16 @@ app.post("/watchlist/:movieid/:username",(req,res)=>{
         res.send(response)
     })
 })
+app.put("/rateMovie/:username/:movieId",(req,res)=>{
+    username=req.params.username
+    movieId=req.params.movieId
+    rating=req.body["rating"]
+
+    queries.rateMovie(username,movieId,rating).then(response=>{
+        res.send({"message":response})
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })

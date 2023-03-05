@@ -177,6 +177,30 @@ async function watchList(movieid,username){
     
 }
 
+async function rateMovie(username,movieID,rating){
+    const user = await User.findOne({"username":username})
+    const movie = await Movie.findById(movieID)
+    console.log(user)
+
+    for(let i of movie.ratings){
+        if(i.username==user.username){
+            return "User already rated the movie"
+        }
+    }
+    if(movie.ratings.length==0){sumOfRatings=0}
+    else{
+    sumOfRatings=movie.avgRating*movie.ratings.length
+    }
+    movie.avgRating=(sumOfRatings+rating)/(movie.ratings.length+1)
+
+    movie.ratings.push({"username":user.username,"rating":rating})
+    user.ratings.push({"movie":movieId,"rating":rating})
+
+    user.save()
+    movie.save()
+    return {"Updated Entries":[user,movie]}
+}
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
@@ -186,3 +210,4 @@ module.exports.getMoviebyId=getMoviebyId
 module.exports.addReview=addReview
 module.exports.likes=likes
 module.exports.watchList=watchList
+module.exports.rateMovie=rateMovie
