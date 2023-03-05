@@ -131,6 +131,17 @@ app.put("/followUser/:user1/:user2",(req,res)=>{
     })
 })
 
+app.put("/unFollowUser/:username1/:username2",(req,res)=>{
+    user1=req.params.username1
+    user2=req.params.username2
+    queries.unfollowuser(user1,user2).then(response=>{
+        if(response=="user not found"||response=="user does not exist in followers list"){
+            res.send({"message":response})
+        }
+        res.send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
