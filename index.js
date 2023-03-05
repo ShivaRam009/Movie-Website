@@ -27,6 +27,7 @@ app.post("/addUser",(req,res)=>{
         res.send(err)
     })
 })
+
 app.get("/getUser/:username",(req,res)=>{
     username=req.params.username
     queries.getUser(username).then(response=>{
@@ -80,6 +81,19 @@ app.get("/getMovieById/:id",(req,res)=>{
         }
     })
 })
+
+app.post("/addReview/:userId/:movieId",(req,res)=>{
+    userId=req.params.userId
+    movieId=req.params.movieId
+    review=req.body["review"]
+    queries.addReview(userId,movieId,review).then(response=>{
+        if(response=="User not found" || response=="Movie not found"){
+            res.send({"message":response})
+        }
+        res.send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })

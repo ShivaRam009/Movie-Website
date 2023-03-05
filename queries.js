@@ -8,6 +8,7 @@ mongoose.set("strictQuery", false);
 
 const User = mongoose.model("User",schemas.user)
 const Movie = mongoose.model("Movie",schemas.movie)
+const Review =mongoose.model("Review",schemas.review)
 
 async function addUser(userData){
     const newUser = new User(userData)
@@ -114,9 +115,36 @@ async function getMovieByFullName(name){
     }
 }
 
+
+async function addReview(username,movieId,review){
+    const user=await User.findOne({"username":username})
+    const movie=await Movie.findById(movieId);
+    if(user==null)
+    {
+        return "User not found"
+    }
+    if(movie==null)
+    {
+        return "Movie not found"
+    }
+    body={
+        "user":user._id,
+        "movie":movieId,
+        "review":review
+    }
+    const newReview=await new Review(body)
+    newReview.save()
+    user.reviews.push({"movieId":movieId,"reviewId":newReview._id})
+    movie.reviews.push({"userId":user._id,"reviewId":newReview._id})
+    user.save()
+    movie.save()
+    return [newReview,user,movie]
+}
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 module.exports.addMovie = addMovie
 module.exports.getMovieByFullName = getMovieByFullName
 module.exports.getMoviebyId=getMoviebyId
+module.exports.addReview=addReview
