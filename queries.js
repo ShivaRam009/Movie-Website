@@ -10,7 +10,6 @@ const User = mongoose.model("User",schemas.user)
 const Movie = mongoose.model("Movie",schemas.movie)
 
 async function addUser(userData){
-    
     const newUser = new User(userData)
     const userExists = await User.findOne({username:newUser.username})
     if(userExists==null){
@@ -42,10 +41,26 @@ async function deleteUser(username){
         
     }
     catch(e){
-        return e.mesage
+        return e.message
     }
     
 } 
+
+async function getUser(username){
+    try{
+        const user=await User.findOne({"username":username})
+        if(user!=null)
+        {
+            return user
+        }
+        else{
+            return "User does not exist"
+        }
+    }
+    catch(e) {
+        return e.message;
+    }
+}
 
 async function addMovie(imdbID){
     url=`https://www.omdbapi.com/?i=${imdbID}&apikey=20284f8e`
@@ -84,11 +99,9 @@ async function addMovie(imdbID){
     else{
         return "Movie exists"
     }
-
-    
-
 }
 
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 module.exports.addMovie = addMovie
+module.exports.getUser= getUser

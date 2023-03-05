@@ -34,6 +34,13 @@ app.get("/addMovie/:imdbID",(req,res)=>{
     })
 })
 
+app.get("/getUser/:username",(req,res)=>{
+    username=req.params.username
+    queries.getUser(username).then(response=>{
+        res.send(response)
+    })
+})
+
 //delete methods
 app.delete("/deleteUser/:username",(req,res)=>{
     username=req.params.username
