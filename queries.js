@@ -157,7 +157,7 @@ async function likes(movieid,username){
     }
     if(user==null){
         return "no user found"
-    }    
+    }
 }
 
 async function watchList(movieid,username){
@@ -299,6 +299,53 @@ async function likeReview(username,reviewId){
 
 
 
+async function unfollowuser(username_1,username_2){//username 1 unfollow username2
+    const username1=await User.findOne({"username":username_1})
+    const username2=await User.findOne({"username":username_2})
+    
+    if(username1!=null && username2!=null){
+        var index=username1.following.indexOf(username2.username)
+        if(index==-1){
+            return "user does not exist in following list"
+        }
+        username1.following.splice(index,1)
+        username1.number_of_followings=username1.number_of_followings-1
+        var index=username2.followers.indexOf(username1.username)
+        username2.followers.splice(index,1)
+        username2.number_of_followers=username2.number_of_followers-1
+        username1.save()
+        username2.save()
+        return username1.username+" unfollowed "+username2.username
+    }
+    if(username1==null||username2==null){
+        return "user not found"
+    }
+}
+
+async function rateMovie(username,movieID,rating){
+    const user = await User.findOne({"username":username})
+    const movie = await Movie.findById(movieID)
+    console.log(user)
+
+    for(let i of movie.ratings){
+        if(i.username==user.username){
+            return "User already rated the movie"
+        }
+    }
+    if(movie.ratings.length==0){sumOfRatings=0}
+    else{
+    sumOfRatings=movie.avgRating*movie.ratings.length
+    }
+    movie.avgRating=(sumOfRatings+rating)/(movie.ratings.length+1)
+
+    movie.ratings.push({"username":user.username,"rating":rating})
+    user.ratings.push({"movie":movieId,"rating":rating})
+
+    user.save()
+    movie.save()
+    return {"Updated Entries":[user,movie]}
+}
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
@@ -308,8 +355,6 @@ module.exports.getMoviebyId=getMoviebyId
 module.exports.addReview=addReview
 module.exports.likes=likes
 module.exports.watchList=watchList
+module.exports.unfollowuser=unfollowuser
 module.exports.followUser=followUser
-module.exports.addCommentOnReview=addCommentOnReview
-module.exports.addToFaves=addToFaves
-module.exports.removeFromFaves=removeFromFaves
-module.exports.likeReview=likeReview
+module.exports.rateMovie=rateMovie
