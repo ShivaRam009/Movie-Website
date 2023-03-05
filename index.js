@@ -22,8 +22,32 @@ app.post("/addUser",(req,res)=>{
 
     queries.addUser(userData).then(response=>{
         res.send("user added")
+        res.send(response)
     }).catch(err=>{
         res.send(err)
+    })
+})
+app.get("/getUser/:username",(req,res)=>{
+    username=req.params.username
+    queries.getUser(username).then(response=>{
+        if(response=="User Not Found"){
+            res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
+    })
+})
+
+app.get("/getMovieByFullName/:movieName",(req,res)=>{
+    movieName=req.params.movieName
+    queries.getMovieByFullName(movieName).then(response=>{
+        if(response=="Can't find movie"){
+             res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
     })
 })
 
@@ -34,12 +58,7 @@ app.get("/addMovie/:imdbID",(req,res)=>{
     })
 })
 
-app.get("/getUser/:username",(req,res)=>{
-    username=req.params.username
-    queries.getUser(username).then(response=>{
-        res.send(response)
-    })
-})
+
 
 //delete methods
 app.delete("/deleteUser/:username",(req,res)=>{
@@ -49,7 +68,18 @@ app.delete("/deleteUser/:username",(req,res)=>{
     })
 })
 
-
+app.get("/getMovieById/:id",(req,res)=>{
+    ids=req.params.id
+    console.log(ids)
+    queries.getMoviebyId(ids).then(response=>{
+        if(response=="Movie Not Found"){
+            res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
+    })
+})
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })

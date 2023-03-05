@@ -25,7 +25,7 @@ const user = new mongoose.Schema({
     bio:String,
     following:{
         type:Array,
-        default:[this.username]
+        default:[]
     },
     number_of_followings:{
         type:Number,
@@ -138,6 +138,10 @@ const review = new mongoose.Schema({
     },
     movie:{
         type:mongoose.Types.ObjectId,
+        required:true
+    },
+    review:{
+        type:String,
         required:true
     },
     comments:{
