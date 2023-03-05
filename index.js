@@ -51,7 +51,18 @@ app.delete("/deleteUser/:username",(req,res)=>{
     })
 })
 
-
+app.get("/getMovieById/:id",(req,res)=>{
+    ids=req.params.id
+    console.log(ids)
+    queries.getMoviebyId(ids).then(response=>{
+        if(response=="Movie Not Found"){
+            res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
+    })
+})
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })

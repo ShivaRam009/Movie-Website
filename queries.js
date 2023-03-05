@@ -56,6 +56,15 @@ async function getUser(username){
         return "User Not Found"
     }
 }
+async function getMoviebyId(movieid){
+    const movie=await Movie.findById(movieid)
+    if(movie!=null){
+        return movie
+    }
+    else{
+        return "Movie Not Found"
+    }
+}
 async function addMovie(imdbID){
     url=`https://www.omdbapi.com/?i=${imdbID}&apikey=20284f8e`
     console.log(url)
@@ -93,11 +102,10 @@ async function addMovie(imdbID){
     else{
         return "Movie exists"
     }
-
-    
-
 }
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 module.exports.addMovie = addMovie
+module.exports.getMoviebyId=getMoviebyId
