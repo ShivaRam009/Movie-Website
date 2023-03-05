@@ -116,14 +116,19 @@ const movie = new mongoose.Schema({
         type:Array,
         default:[]
     },
-    crew:{
-        type:Array,
-        default:[]
-    },
+    directors:String,
+    writers:String,
     country:String,
     language:String,
     type:String,
-    seasons:Number
+    seasons:{
+        type:Number,
+        default:0
+    },
+    imdbID:{
+        required:true,
+        type:String
+    }
 })
 
 const review = new mongoose.Schema({
