@@ -24,6 +24,17 @@ app.post("/addUser",(req,res)=>{
         res.send(err)
     })
 })
+app.get("/getUser/:username",(req,res)=>{
+    username=req.params.username
+    queries.getUser(username).then(response=>{
+        if(response=="User Not Found"){
+            res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
+    })
+})
 
 app.get("/addMovie/:imdbID",(req,res)=>{
     imdbID=req.params.imdbID
