@@ -36,12 +36,26 @@ app.get("/getUser/:username",(req,res)=>{
     })
 })
 
+app.get("/getMovieByFullName/:movieName",(req,res)=>{
+    movieName=req.params.movieName
+    queries.getMovieByFullName(movieName).then(response=>{
+        if(response=="Can't find movie"){
+             res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
+    })
+})
+
 app.get("/addMovie/:imdbID",(req,res)=>{
     imdbID=req.params.imdbID
     queries.addMovie(imdbID).then(response=>{
         res.send(response)
     })
 })
+
+
 
 //delete methods
 app.delete("/deleteUser/:username",(req,res)=>{
