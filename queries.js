@@ -241,3 +241,4 @@ module.exports.addReview=addReview
 module.exports.likes=likes
 module.exports.watchList=watchList
 module.exports.unfollowuser=unfollowuser
+module.exports.followUser=followUser
