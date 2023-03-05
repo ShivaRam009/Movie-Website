@@ -46,7 +46,16 @@ async function deleteUser(username){
     }
     
 } 
-
+async function getUser(username){
+    // const user=new User(userData)
+    const user=await User.findOne({"username":username})
+    if(user!=null){
+        return user
+    }
+    else{
+        return "User Not Found"
+    }
+}
 async function addMovie(imdbID){
     url=`https://www.omdbapi.com/?i=${imdbID}&apikey=20284f8e`
     console.log(url)
@@ -88,7 +97,7 @@ async function addMovie(imdbID){
     
 
 }
-
+module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 module.exports.addMovie = addMovie

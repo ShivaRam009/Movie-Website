@@ -19,8 +19,20 @@ app.post("/addUser",(req,res)=>{
 
     queries.addUser(userData).then(response=>{
         res.send("user added")
+        res.send(response)
     }).catch(err=>{
         res.send(err)
+    })
+})
+app.get("/getUser/:username",(req,res)=>{
+    username=req.params.username
+    queries.getUser(username).then(response=>{
+        if(response=="User Not Found"){
+            res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
     })
 })
 
