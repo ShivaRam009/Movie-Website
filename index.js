@@ -94,6 +94,27 @@ app.post("/addReview/:userId/:movieId",(req,res)=>{
     })
 })
 
+app.post("/likes/:movieid/:username",(req,res)=>{
+    id=req.params.movieid
+    username=req.params.username
+    queries.likes(id,username).then(response=>{
+        if(response=="no movie found"|| response=="no user found"){
+            res.send({"message":response})
+        }
+        res.send(response)
+    })
+})
+
+app.post("/watchlist/:movieid/:username",(req,res)=>{
+    id=req.params.movieid
+    username=req.params.username
+    queries.watchList(id,username).then(response=>{
+        if(response=="no movie found"|| response=="no user found"){
+            res.send({"message":response})
+        }
+        res.send(response)
+    })
+})
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })

@@ -140,6 +140,42 @@ async function addReview(username,movieId,review){
     movie.save()
     return [newReview,user,movie]
 }
+async function likes(movieid,username){
+    const movie=await Movie.findById(movieid)
+    const user=await User.findOne({"username":username})
+    if(movie!=null && user!=null){
+        movie.likes=movie.likes+1
+        movie.likers.push(user.username)
+        user.movies_liked.push(movie.id)
+        movie.save()
+        user.save()
+        return "Liked movie "+movie.name
+        
+    }
+    if(movie==null){
+        return "no movie found"
+    }
+    if(user==null){
+        return "no user found"
+    }    
+}
+
+async function watchList(movieid,username){
+    const movie=await Movie.findById(movieid)
+    const user=await User.findOne({"username":username})
+    if(user!=null && movie!=null){
+        user.watchlist.push(movie.id)
+        user.save()
+        return "movie added to watchlist"
+    }
+    if(user==null){
+        return "no user found"
+    }
+    if(movie==null){
+        return "no movie found"
+    }
+    
+}
 
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
@@ -148,3 +184,5 @@ module.exports.addMovie = addMovie
 module.exports.getMovieByFullName = getMovieByFullName
 module.exports.getMoviebyId=getMoviebyId
 module.exports.addReview=addReview
+module.exports.likes=likes
+module.exports.watchList=watchList
