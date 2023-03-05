@@ -120,3 +120,4 @@ module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
 module.exports.addMovie = addMovie
 module.exports.getMovieByFullName = getMovieByFullName
+module.exports.getMoviebyId=getMoviebyId
