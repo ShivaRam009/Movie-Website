@@ -178,12 +178,29 @@ app.put("/removeFromFaves/:username/:movieId",(req,res)=>{
     })
 })
 
+
+
 app.put("/likeReview/:username/:reviewId",(req,res)=>{
     username=req.params.username
     reviewId=req.params.reviewId
     queries.likeReview(username,reviewId).then(response=>{
         res.send({"message":response})
     })
+})
+
+
+
+app.put("/removefromwatchlist/:movieid/:username",(req,res)=>{
+    user=req.params.username
+    movie=req.params.movieid
+    queries.removefromwatchlist(movie,user).then(response=>{
+        if(response=="movie not found"|| response=="user not found"|| response=="movie not in watchlist"){
+            res.send({"message":response})
+        }
+        else{
+            res.send(response)
+        }
+    })
 })
 app.listen(port,()=>{
     console.log('listening at port '+port)

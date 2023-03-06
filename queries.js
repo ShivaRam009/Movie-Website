@@ -343,7 +343,26 @@ async function rateMovie(username,movieID,rating){
 }
 
 
-
+async function removefromwatchlist(movieid,username){
+    const user=await User.findOne({"username":username})
+    if(user==null){
+        return "user not found"
+    }
+    const movie=await Movie.findById(movieid)
+    if(movie==null){
+        return "movie not found"
+    }
+    var index=user.watchlist.indexOf(movieid)
+    if(index!=-1){
+        user.watchlist.splice(index,1)
+        user.save()
+        return movie.name+" removed from watchlist"
+    }
+    else{
+        return "movie not in watchlist"
+    }
+    
+}
 
 
 
@@ -365,3 +384,4 @@ module.exports.addCommentOnReview=addCommentOnReview
 module.exports.addToFaves=addToFaves
 module.exports.removeFromFaves=removeFromFaves
 module.exports.likeReview=likeReview
+module.exports.removefromwatchlist=removefromwatchlist
