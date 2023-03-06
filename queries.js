@@ -144,12 +144,15 @@ async function likes(movieid,username){
     const movie=await Movie.findById(movieid)
     const user=await User.findOne({"username":username})
     if(movie!=null && user!=null){
+        if(movie.likers.includes(username)){
+            return "Movie is already liked"
+        }
         movie.likes=movie.likes+1
         movie.likers.push(user.username)
         user.movies_liked.push(movie.id)
         movie.save()
         user.save()
-        return "Liked movie "+movie.name
+        return {"updated entries":[user,movie]}
         
     }
     if(movie==null){
@@ -364,6 +367,30 @@ async function removefromwatchlist(movieid,username){
     
 }
 
+async function unlikeMovie(username,movieId){
+    const movie=await Movie.findById(movieId)
+    const user=await User.findOne({"username":username})
+    if(user==null){
+        return "User doesn't exist"
+    }
+    if(movie==null){
+        return "Movie doesn't exist"
+    }
+
+    if(!movie.likers.includes(username)){
+        return "User did not like this post"
+    }
+
+    userIndex = movie.likers.indexOf(username)
+    movie.likers.splice(userIndex,1)
+    movie.likes-=1
+    movieIndex=user.movies_liked.indexOf(movieId)
+    user.movies_liked.splice(movieIndex,1)
+    user.save()
+    movie.save()
+    return {"updated entries":[user,movie]}
+}
+
 
 
 
@@ -385,3 +412,4 @@ module.exports.addToFaves=addToFaves
 module.exports.removeFromFaves=removeFromFaves
 module.exports.likeReview=likeReview
 module.exports.removefromwatchlist=removefromwatchlist
+module.exports.unlikeMovie=unlikeMovie
