@@ -397,7 +397,15 @@ async function unlikeMovie(username,movieId){
 }
 
 
+async function getReviewById(reviewId){
+    review = await Review.findById(reviewId)
 
+    if(review==null){
+        return {"message":"Review not found"}
+    }
+
+    return review
+}
 
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
@@ -417,3 +425,4 @@ module.exports.removeFromFaves=removeFromFaves
 module.exports.likeReview=likeReview
 module.exports.removefromwatchlist=removefromwatchlist
 module.exports.unlikeMovie=unlikeMovie
+module.exports.getReviewById=getReviewById
