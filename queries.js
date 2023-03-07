@@ -328,8 +328,11 @@ async function rateMovie(username,movieID,rating){
 
     for(let i of movie.ratings){
         if(i.username==user.username){ //{123,7},{456,9}
+            oldRating=i.rating
             index=movie.ratings.indexOf(i)
             movie.ratings.splice(index,1)
+            index=user.ratings.indexOf({"movie":movie._id,"rating":oldRating})
+            user.ratings.splice(index,1)
             break
         }
     }
@@ -392,7 +395,6 @@ async function unlikeMovie(username,movieId){
     movie.save()
     return {"updated entries":[user,movie]}
 }
-
 
 
 
