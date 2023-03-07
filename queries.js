@@ -327,8 +327,10 @@ async function rateMovie(username,movieID,rating){
     console.log(user)
 
     for(let i of movie.ratings){
-        if(i.username==user.username){
-            return "User already rated the movie"
+        if(i.username==user.username){ //{123,7},{456,9}
+            index=movie.ratings.indexOf(i)
+            movie.ratings.splice(index,1)
+            break
         }
     }
     if(movie.ratings.length==0){sumOfRatings=0}
