@@ -217,6 +217,21 @@ app.put("/removefromwatchlist/:movieid/:username",(req,res)=>{
 })
 
 
+app.get("/getReviewsOfUser/:username",(req,res)=>{
+    user=req.params.username
+    queries.getReviewOfUser(user).then(response=>{
+        res.send(response)
+    })
+})
+
+
+app.get("/getReviewsByMovie/:movieid",(req,res)=>{
+    movie=req.params.movieid
+    queries.getReviewsByMovieId(movie).then(response=>{
+        res.send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
