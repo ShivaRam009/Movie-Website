@@ -52,14 +52,12 @@ app.get("/getMovieByFullName/:movieName",(req,res)=>{
     })
 })
 
-app.get("/addMovie/:imdbID",(req,res)=>{
-    imdbID=req.params.imdbID
-    queries.addMovie(imdbID).then(response=>{
+app.get("/getReviewById/:reviewId",(req,res)=>{
+    reviewId=req.params.reviewId
+    queries.getReviewById(reviewId).then(response=>{
         res.send(response)
     })
 })
-
-
 
 //delete methods
 app.delete("/deleteUser/:username",(req,res)=>{
@@ -94,6 +92,12 @@ app.post("/addReview/:userId/:movieId",(req,res)=>{
     })
 })
 
+app.post("/addMovie/:imdbID",(req,res)=>{
+    imdbID=req.params.imdbID
+    queries.addMovie(imdbID).then(response=>{
+        res.send(response)
+    })
+})
 
 
 app.put("/likes/:movieid/:username",(req,res)=>{
