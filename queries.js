@@ -327,7 +327,7 @@ async function rateMovie(username,movieID,rating){
     console.log(user)
 
     for(let i of movie.ratings){
-        if(i.username==user.username){ //{123,7},{456,9}
+        if(i.username==user.username){
             oldRating=i.rating
             index=movie.ratings.indexOf(i)
             movie.ratings.splice(index,1)
