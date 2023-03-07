@@ -327,7 +327,7 @@ async function rateMovie(username,movieID,rating){
     console.log(user)
 
     for(let i of movie.ratings){
-        if(i.username==user.username){ //{123,7},{456,9}
+        if(i.username==user.username){
             oldRating=i.rating
             index=movie.ratings.indexOf(i)
             movie.ratings.splice(index,1)
@@ -408,6 +408,29 @@ async function getReviewById(reviewId){
 }
 
 
+async function getReviewOfUser(username){
+    user=await User.findOne({"username":username})
+    if(user==null){
+        return {"message":"user not found"}
+    }
+    var allReviews=[]
+    for(i of user.reviews){
+        allReviews.push(i.reviewId)
+    }
+    return allReviews
+}
+
+async function getReviewsByMovieId(movieid){
+    movie=await Movie.findById(movieid)
+    if(movie==null){
+        return {"message":"movie not found"}
+    }
+    allReviews=[]
+    for(i of movie.reviews){
+        allReviews.push(i.reviewId)
+    }
+    return allReviews
+}
 
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
@@ -428,3 +451,5 @@ module.exports.likeReview=likeReview
 module.exports.removefromwatchlist=removefromwatchlist
 module.exports.unlikeMovie=unlikeMovie
 module.exports.getReviewById=getReviewById
+module.exports.getReviewOfUser=getReviewOfUser
+module.exports.getReviewsByMovieId=getReviewsByMovieId
