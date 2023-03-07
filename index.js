@@ -100,6 +100,21 @@ app.post("/addMovie/:imdbID",(req,res)=>{
 })
 
 
+app.post("/registerUser",(req,res)=>{
+    registrationForm=req.body 
+    queries.registerUser(registrationForm).then(response=>{
+        res.send(response)
+    })
+})
+
+app.post("/loginUser",(req,res)=>{
+    const {email,password} = req.body
+    queries.loginUser(email,password).then(response=>{
+        res.send(response)
+    })
+})
+
+
 app.put("/likes/:movieid/:username",(req,res)=>{
     id=req.params.movieid
     username=req.params.username

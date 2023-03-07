@@ -1,7 +1,7 @@
 
 const schemas = require('./schemas.js')
-
-//const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose');
 
 mongoose.set("strictQuery", false);
@@ -9,6 +9,8 @@ mongoose.set("strictQuery", false);
 const User = mongoose.model("User",schemas.user)
 const Movie = mongoose.model("Movie",schemas.movie)
 const Review =mongoose.model("Review",schemas.review)
+
+SECRET_KEY="moviehub"
 
 async function addUser(userData){
     const newUser = new User(userData)
@@ -432,6 +434,42 @@ async function getReviewsByMovieId(movieid){
     return allReviews
 }
 
+async function registerUser(registrationForm){
+    var possibleUser = await User.findOne({email:registrationForm["email"]})
+    if(possibleUser){
+        console.log(possibleUser)
+        return "User already exists"
+    }
+    else{
+        registrationForm["password"]= await bcrypt.hash(registrationForm["password"],10)
+        const newUser = await new User(registrationForm)
+        newUser.save()
+
+        const token = jwt.sign({email: newUser.email,id:newUser._id},SECRET_KEY)
+        return token
+    }
+}
+
+async function loginUser(email,password){
+    var possibleUser = await User.findOne({email:email})
+
+    if(possibleUser==null){
+        return {"message":"User doesn't exist"}
+    }
+    const matchPassword = await bcrypt.compare(password,possibleUser.password)
+
+    if(!matchPassword){
+        return {"message":"Wrong Password"}
+    }
+
+    const token = await jwt.sign({email:possibleUser.email,password:possibleUser._id},SECRET_KEY)
+    return token
+}
+
+
+
+
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
@@ -453,3 +491,5 @@ module.exports.unlikeMovie=unlikeMovie
 module.exports.getReviewById=getReviewById
 module.exports.getReviewOfUser=getReviewOfUser
 module.exports.getReviewsByMovieId=getReviewsByMovieId
+module.exports.registerUser=registerUser
+module.exports.loginUser=loginUser
