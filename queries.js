@@ -407,6 +407,31 @@ async function getReviewById(reviewId){
     return review
 }
 
+
+async function getReviewOfUser(username){
+    user=await User.findOne({"username":username})
+    if(user==null){
+        return {"message":"user not found"}
+    }
+    var allReviews=[]
+    for(i of user.reviews){
+        allReviews.push(i.reviewId)
+    }
+    return allReviews
+}
+
+async function getReviewsByMovieId(movieid){
+    movie=await Movie.findById(movieid)
+    if(movie==null){
+        return {"message":"movie not found"}
+    }
+    allReviews=[]
+    for(i of movie.reviews){
+        allReviews.push(i.reviewId)
+    }
+    return allReviews
+}
+
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
@@ -426,3 +451,5 @@ module.exports.likeReview=likeReview
 module.exports.removefromwatchlist=removefromwatchlist
 module.exports.unlikeMovie=unlikeMovie
 module.exports.getReviewById=getReviewById
+module.exports.getReviewOfUser=getReviewOfUser
+module.exports.getReviewsByMovieId=getReviewsByMovieId
