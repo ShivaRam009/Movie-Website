@@ -2,6 +2,7 @@
 const schemas = require('./schemas.js')
 const queries = require('./queries.js')
 const fetch = require("node-fetch");
+const confidential = require('./confidential.js')
 
 
 const express = require('express')
@@ -12,7 +13,7 @@ const port=9000
 const app = express()
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://poirot22:moviepro@moviesdb.6iptvma.mongodb.net/moviesite').then(()=>{
+mongoose.connect(confidential.MONGODB_URI).then(()=>{
     console.log('connected to database')
 }).catch((err)=>{console.log(err)})
 
@@ -95,6 +96,21 @@ app.post("/addReview/:userId/:movieId",(req,res)=>{
 app.post("/addMovie/:imdbID",(req,res)=>{
     imdbID=req.params.imdbID
     queries.addMovie(imdbID).then(response=>{
+        res.send(response)
+    })
+})
+
+
+app.post("/registerUser",(req,res)=>{
+    registrationForm=req.body 
+    queries.registerUser(registrationForm).then(response=>{
+        res.send(response)
+    })
+})
+
+app.post("/loginUser",(req,res)=>{
+    const {email,password} = req.body
+    queries.loginUser(email,password).then(response=>{
         res.send(response)
     })
 })
