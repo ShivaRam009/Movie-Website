@@ -2,6 +2,7 @@
 const schemas = require('./schemas.js')
 const queries = require('./queries.js')
 const fetch = require("node-fetch");
+const confidential = require('./confidential.js')
 
 
 const express = require('express')
@@ -12,7 +13,7 @@ const port=9000
 const app = express()
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://poirot22:moviepro@moviesdb.6iptvma.mongodb.net/moviesite').then(()=>{
+mongoose.connect(confidential.MONGODB_URI).then(()=>{
     console.log('connected to database')
 }).catch((err)=>{console.log(err)})
 

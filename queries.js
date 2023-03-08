@@ -3,6 +3,7 @@ const schemas = require('./schemas.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose');
+const confidential = require('./confidential.js')
 
 mongoose.set("strictQuery", false);
 
@@ -10,7 +11,7 @@ const User = mongoose.model("User",schemas.user)
 const Movie = mongoose.model("Movie",schemas.movie)
 const Review =mongoose.model("Review",schemas.review)
 
-SECRET_KEY="moviehub"
+
 
 async function addUser(userData){
     const newUser = new User(userData)
@@ -442,10 +443,14 @@ async function registerUser(registrationForm){
     }
     else{
         registrationForm["password"]= await bcrypt.hash(registrationForm["password"],10)
+        
         const newUser = await new User(registrationForm)
+        if(!("displayName" in registerForm)){
+            newUser.displayName=newUser.firstName+" "+newUser.lastName
+        }
         newUser.save()
 
-        const token = jwt.sign({email: newUser.email,id:newUser._id},SECRET_KEY)
+        const token = jwt.sign({email: newUser.email,id:newUser._id},confidential.SECRET_KEY)
         return token
     }
 }
@@ -462,7 +467,7 @@ async function loginUser(email,password){
         return {"message":"Wrong Password"}
     }
 
-    const token = await jwt.sign({email:possibleUser.email,password:possibleUser._id},SECRET_KEY)
+    const token = await jwt.sign({email:possibleUser.email,password:possibleUser._id},confidential.SECRET_KEY)
     return token
 }
 
