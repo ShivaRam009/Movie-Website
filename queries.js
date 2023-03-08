@@ -451,7 +451,7 @@ async function registerUser(registrationForm){
         newUser.save()
 
         const token = jwt.sign({email: newUser.email,id:newUser._id},confidential.SECRET_KEY)
-        return token
+        return {"message":"User Registered","token":token}
     }
 }
 
@@ -468,7 +468,7 @@ async function loginUser(email,password){
     }
 
     const token = await jwt.sign({email:possibleUser.email,password:possibleUser._id},confidential.SECRET_KEY)
-    return token
+    return {"message":"User Logged In","token":token}
 }
 
 
