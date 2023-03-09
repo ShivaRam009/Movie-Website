@@ -3,8 +3,8 @@ const schemas = require('./schemas.js')
 const queries = require('./queries.js')
 const fetch = require("node-fetch");
 const confidential = require('./confidential.js')
-
-
+const jwt = require('jsonwebtoken')
+const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
 const { response } = require('express');
@@ -12,10 +12,42 @@ const { json } = require('body-parser');
 const port=9000
 const app = express()
 app.use(express.json())
+app.use(cors({
+    origin:'http://localhost:4200'
+}
+))
+
 
 mongoose.connect(confidential.MONGODB_URI).then(()=>{
     console.log('connected to database')
 }).catch((err)=>{console.log(err)})
+
+app.use("/verify",(req,res,next)=>{
+    try{
+        
+        let token=req.headers.authorization 
+
+        if(token!=null){
+            console.log(token)
+            token=token.split(" ")[1]
+            let user = jwt.verify(token,confidential.SECRET_KEY)
+            console.log(user.email)
+            req.userEmail=user.email
+        }
+        else{
+            res.sendStatus(401).json({message:"unauthorised user"})
+        }
+        next()
+    }
+    catch(error){
+        console.log(error)
+        res.sendStatus(201).json({message:"Unauthorized user"})
+    }
+})
+
+app.get("/verify",(req,res)=>{
+    res.send({"userEmail":req.userEmail})
+})
 
 
 app.post("/addUser",(req,res)=>{
@@ -38,6 +70,16 @@ app.get("/getUser/:username",(req,res)=>{
         else{
             res.send(response)
         }
+    })
+})
+
+app.get("/getUserByEmail/:email",(req,res)=>{
+    email=req.params.email
+    queries.getUserByEmail(email).then(response=>{
+        
+        res.send(response)
+        
+        
     })
 })
 
