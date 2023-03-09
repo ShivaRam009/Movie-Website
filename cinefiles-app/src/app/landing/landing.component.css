@@ -1,0 +1,62 @@
+.button{
+    background-color: #fcc139;
+    border: 1px solid black;
+    margin:25px;
+    padding:8px;
+    border-radius: 2px;
+}
+.buttons{
+
+    text-align: center;
+    margin-top: 5px;
+}
+
+.button:hover{
+    opacity: 0.7;
+}
+
+.name1{
+    text-align: center;
+    font-size: 50px;
+    color:#fcc139; 
+    text-shadow: 100px;
+    margin-top:0;
+}
+
+.name2{
+    text-align: center;
+    font-size: 30px;
+    /* color:#FFCC00; */
+    text-shadow: 100px;
+    font-family: 'Trirong', serif;
+
+}
+.name3{
+    /* color:#FFCC00; */
+}
+.bar1{
+    background-color:#fcc139
+}
+
+/* #bg-img{
+    background-image: url("https://i.insider.com/5f2c5d6658c24d3f571461b9?width=600&format=jpeg&auto=webp");
+    background-position: 390px;
+    background-repeat: no-repeat;
+} */
+
+#register{
+    margin-top: 0px;
+}
+
+#cinefiles{
+    background-color: #1f4489;
+    padding:20px;
+    text-align: center;
+    color:#fcc139; 
+    margin-top: 0;
+    font-size: 50px;
+    font-family: 'Libre Baskerville', serif;
+}
+.input-text{
+    height:20px;
+}
