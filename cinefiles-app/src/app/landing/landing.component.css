@@ -28,6 +28,8 @@
     font-size: 30px;
     /* color:#FFCC00; */
     text-shadow: 100px;
+    font-family: 'Trirong', serif;
+
 }
 .name3{
     /* color:#FFCC00; */
@@ -53,6 +55,7 @@
     color:#fcc139; 
     margin-top: 0;
     font-size: 50px;
+    font-family: 'Libre Baskerville', serif;
 }
 .input-text{
     height:20px;

@@ -471,6 +471,14 @@ async function loginUser(email,password){
     return {"message":"User Logged In","token":token}
 }
 
+async function getUserByEmail(email){
+    const user=await User.findOne({"email":email})
+    if(user!=null){
+        return user
+    }
+    return {"message":"User Not Found"}
+}
+
 
 
 
@@ -498,3 +506,4 @@ module.exports.getReviewOfUser=getReviewOfUser
 module.exports.getReviewsByMovieId=getReviewsByMovieId
 module.exports.registerUser=registerUser
 module.exports.loginUser=loginUser
+module.exports.getUserByEmail=getUserByEmail

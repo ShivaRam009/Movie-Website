@@ -10,12 +10,14 @@
 
 <br>
 <div class="buttons">
-    <form action="" [formGroup]="loginForm" id="login-form">
+    <form action="" [formGroup]="loginForm" id="login-form" (ngSubmit)="loginUser()">
         <input type="text" placeholder="Enter email" formControlName="email" class="input-text">
         <br> <br>
         <input type="password" placeholder="Enter password" formControlName="password" class="input-text">
+        <br> <br>
+        <button class="button">LOGIN</button>
     </form>
-    <button class="button">LOGIN</button>
+    
     
     <br>
     <h3 class="name3">Don't have an account?</h3>
