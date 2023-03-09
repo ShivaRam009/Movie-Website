@@ -60,3 +60,7 @@
 .input-text{
     height:20px;
 }
+#wrong-pass-text{
+    color:#DC0000
+    ;
+}

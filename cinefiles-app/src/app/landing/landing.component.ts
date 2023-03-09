@@ -20,10 +20,14 @@ export class LandingComponent {
     password:new FormControl()
   }
   )
+  wrongPassword=false
 
   loginUser(){
     this.http.post("http://localhost:9000/loginUser",this.loginForm.value).subscribe((data=>{
       this.temp=data
+      if(this.temp.message!="User Logged In"){
+        this.wrongPassword=true
+      }
       localStorage.setItem('userToken',this.temp.token)
       if(this.temp.token!=undefined){
         this.router.navigate(['/home']);
