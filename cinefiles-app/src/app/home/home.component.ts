@@ -15,6 +15,7 @@ export class HomeComponent {
   userEmail:any
   temp:any
   userData:any
+  
   async ngOnInit(){
     this.token=localStorage.getItem('userToken')
     var headers_object = new HttpHeaders({

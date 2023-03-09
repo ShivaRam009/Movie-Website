@@ -15,6 +15,7 @@
         <br> <br>
         <input type="password" placeholder="Enter password" formControlName="password" class="input-text">
         <br> <br>
+        <p *ngIf="wrongPassword" id="wrong-pass-text">Wrong Email or Password</p>
         <button class="button">LOGIN</button>
     </form>
     
