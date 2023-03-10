@@ -1,51 +1,57 @@
 <h1 id="cinefiles">CINE FILES</h1>
 <div class="container">
     <div class="heading"><h1>Create your Cine Files Account</h1></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
-    <form action="" [formGroup]="registrationForm" id="registration-form">
+    <form action="" [formGroup]="registrationForm" (ngSubmit)="registerUser()">
         <div class="top">
             <div class="name">
                 <div class="first">
                     <p>First Name</p>
-                    <input type="text" name="first-name">
+                    <input type="text" name="first-name" formControlName="firstName">
                 </div>
                 <div class="last">
                     <p>Last Name</p>
-                    <input type="text"  name="last-name">
+                    <input type="text"  name="last-name" formControlName="lastName">
                 </div>
             </div>
             <div class="sec2">
                 <div class="date">
                     <p>Date of Birth</p>
-                    <input type="date" name="date">
+                    <input type="date" name="date" formControlName="dob">
                 </div>
                 <div class="Gender">
                     <p>Username</p>
-                    <input type="text" name="user-name">
+                    <input type="text" name="user-name" formControlName="username">
                 </div>
             </div>
             <div class="sec3">
                 <div class="email">
                     <p>Email Id</p>
-                    <input type="email" name="email">
+                    <input type="email" name="email" formControlName="email">
                 </div>
                 <div class="display-name">
                     <p>Display name</p>
-                    <input type="text" name="display-name">
+                    <input type="text" name="display-name" formControlName="displayName">
                 </div>
             </div>
             <div class="sec3">
                 <div class="password">
                     <p>Password</p>
-                    <input type="password" name="password">
+                    <input type="password" name="password" formControlName="password">
                 </div>
                 <div class="cpassword">
                     <p>Confirm Password</p>
-                    <input type="password" name="confirmpassword">
+                    <input type="password" name="confirmpassword" formControlName="confirmPassword">
                 </div>
             </div>
 
         </div>
         <button class="submit">Submit</button>
     </form>
+    <p *ngIf="!samePass" id="warning1">Entered different passwords</p>
+    <p *ngIf="notEnoughDetails" id="warning1">Enter required details</p>
+
 </div>
