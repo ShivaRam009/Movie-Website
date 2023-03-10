@@ -7,12 +7,14 @@ import { LandingComponent } from './landing/landing.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    HomeComponent
+    HomeComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,
