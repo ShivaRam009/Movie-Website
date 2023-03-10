@@ -1,0 +1,50 @@
+*{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+li{
+    float: left;
+    
+}
+ul{
+    list-style-type: none;
+}
+#searchbar{
+    margin-top: 17px;
+    margin-left: 500px;
+    width:400px;
+    height: 25px;
+    border-radius: 25px ;
+ 
+}
+#navbar{
+    margin-top: 0;
+    background-color: #1f4489;
+    height: 90px;
+    border: 1px solid #1f4489;;
+    
+}
+#name{
+    color:#fcc139;
+    font-size: 40px;
+    margin-top: 10px;
+    font-family: 'Libre Baskerville', serif;
+
+}
+html{
+    margin-top:0;
+}
+.username{
+    color:#fcc139;
+    font-size: 25px;
+    margin-top: 16px;
+    margin-left: 5px;
+    position: relative;
+}
+#profile-pic{
+    height: 35px;
+    margin-top: 14px;
+    margin-left: 25px;
+    border-radius: 25px;
+}
+

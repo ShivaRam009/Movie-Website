@@ -1,2 +1,26 @@
-<p>Username is {{userData.email}}</p>
-<h1 (click)="logout()">Logout</h1>
+<div id="navbar">
+    <ul>
+        <li>
+            <h2 id="name">CINE FILES</h2>
+        </li>
+        <li>
+            <form action="">
+                <input type="text" id="searchbar" placeholder="Search Movie">
+            </form>
+        </li>
+        <li>
+            <img src={{this.userData.profilepic}} id="profile-pic">
+        </li>
+        <li>
+            <h2  class="username">{{this.userData.username}}</h2>
+            <div class="dropdown-content">
+                <h3 (click)="logout()">Logout</h3> 
+            </div>
+        </li>
+    </ul>  
+</div>
+
+
+
+
+

@@ -75,7 +75,10 @@ const user = new mongoose.Schema({
     favorite_films:{
         type:Array,
     },
-    profilepic:String
+    profilepic:{
+        type:String,
+        default:"https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg"
+    }
 })
 
 const movie = new mongoose.Schema({
