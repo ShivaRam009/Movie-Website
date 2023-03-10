@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-registration-page',
@@ -11,7 +13,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class RegistrationPageComponent {
 
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient,private router:Router){
 
   }
   registrationForm=new FormGroup({
@@ -27,15 +29,28 @@ export class RegistrationPageComponent {
 
   samePass=true;
 
+  notEnoughDetails=false;
+
+  temp:any;
+
   registerUser(){
 
-    if(this.registrationForm.value.confirmPassword!=this.registrationForm.value.confirmPassword){
+    if(this.registrationForm.value.password!=this.registrationForm.value.confirmPassword){
       this.samePass=false;
       return 
     }
 
+
     this.http.post("http://localhost:9000/registerUser",this.registrationForm.value).subscribe(resp=>{
+      this.temp=resp
+      if(this.temp.message=="Not enough details provided"){
+        this.notEnoughDetails=true
+      }
       console.log(resp)
+      localStorage.setItem('userToken',this.temp.token)
+      if(this.temp.token!=undefined){
+        this.router.navigate(['/home']);
+      }
     })
 
   }

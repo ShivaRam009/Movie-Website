@@ -24,7 +24,7 @@ async function addUser(userData){
             this_year=Number(today.toISOString().substring(0, 4));
             newUser.age=this_year-birth_year
         }
-        newUser.save()
+        await newUser.save()
         return "User Added"
     }
     else{
@@ -139,8 +139,8 @@ async function addReview(username,movieId,review){
     newReview.save()
     user.reviews.push({"movieId":movieId,"reviewId":newReview._id})
     movie.reviews.push({"userId":user._id,"reviewId":newReview._id})
-    user.save()
-    movie.save()
+    await user.save()
+    await movie.save()
     return [newReview,user,movie]
 }
 async function likes(movieid,username){
@@ -153,8 +153,8 @@ async function likes(movieid,username){
         movie.likes=movie.likes+1
         movie.likers.push(user.username)
         user.movies_liked.push(movie.id)
-        movie.save()
-        user.save()
+        await movie.save()
+        await user.save()
         return {"updated entries":[user,movie]}
         
     }
@@ -171,7 +171,7 @@ async function watchList(movieid,username){
     const user=await User.findOne({"username":username})
     if(user!=null && movie!=null){
         user.watchlist.push(movie.id)
-        user.save()
+        await user.save()
         return "movie added to watchlist"
     }
     if(user==null){
@@ -194,8 +194,8 @@ async function followUser(username1,username2){   //user 1 following user2
             user2.followers.push(user1.username)
             user1.number_of_followings+=1
             user2.number_of_followers+=1
-            user1.save()
-            user2.save()
+            await user1.save()
+            await user2.save()
             return `${user1.username} following ${user2.username}`
         }
         else{
@@ -217,8 +217,8 @@ async function addCommentOnReview(username,reviewId,comment){
     {
         user.comments.push({"reviewId":reviewId,"comment":comment})
         review.comments.push({"username":username,"comment":comment})
-        user.save()
-        review.save()
+        await user.save()
+        await review.save()
         return {"updated entries":[user,review]}
     }
     else if(user==null){
@@ -246,7 +246,7 @@ async function addToFaves(username,movieId){
             return "Movie is already in the list"
         }
         user.favorite_films.push(movieId)
-        user.save()
+        await user.save()
         return {"updated entries": [user]}
     }
     return "List is Full"
@@ -267,7 +267,7 @@ async function removeFromFaves(username,movieId){
         {
             index=user.favorite_films.indexOf(movieId)
             user.favorite_films.splice(index,1)
-            user.save()
+            await user.save()
             return {"updated entries": [user]}
         }
         return "Not in list"
@@ -286,8 +286,8 @@ async function likeReview(username,reviewId){
         user.reviews_liked.push(reviewId)
         review.likers.push(username)
         review.likes+=1
-        user.save()
-        review.save()
+        await user.save()
+        await review.save()
         return {"updated entries":[user,review]}
     }
     else if(user==null){
@@ -315,8 +315,8 @@ async function unfollowuser(username_1,username_2){//username 1 unfollow usernam
         var index=username2.followers.indexOf(username1.username)
         username2.followers.splice(index,1)
         username2.number_of_followers=username2.number_of_followers-1
-        username1.save()
-        username2.save()
+        await username1.save()
+        await username2.save()
         return username1.username+" unfollowed "+username2.username
     }
     if(username1==null||username2==null){
@@ -348,8 +348,8 @@ async function rateMovie(username,movieID,rating){
     movie.ratings.push({"username":user.username,"rating":rating})
     user.ratings.push({"movie":movieId,"rating":rating})
 
-    user.save()
-    movie.save()
+    await user.save()
+    await movie.save()
     return {"Updated Entries":[user,movie]}
 }
 
@@ -366,7 +366,7 @@ async function removefromwatchlist(movieid,username){
     var index=user.watchlist.indexOf(movieid)
     if(index!=-1){
         user.watchlist.splice(index,1)
-        user.save()
+        await user.save()
         return movie.name+" removed from watchlist"
     }
     else{
@@ -394,8 +394,8 @@ async function unlikeMovie(username,movieId){
     movie.likes-=1
     movieIndex=user.movies_liked.indexOf(movieId)
     user.movies_liked.splice(movieIndex,1)
-    user.save()
-    movie.save()
+    await user.save()
+    await movie.save()
     return {"updated entries":[user,movie]}
 }
 
@@ -442,16 +442,24 @@ async function registerUser(registrationForm){
         return "User already exists"
     }
     else{
-        registrationForm["password"]= await bcrypt.hash(registrationForm["password"],10)
         
-        const newUser = await new User(registrationForm)
-        if(!("displayName" in registerForm)){
-            newUser.displayName=newUser.firstName+" "+newUser.lastName
+        
+        try{
+            registrationForm["password"]= await bcrypt.hash(registrationForm["password"],10)
+            const newUser = await new User(registrationForm)
+            if(!("displayName" in registrationForm) || registrationForm.displayName==""){
+                newUser.displayName=newUser.firstName+" "+newUser.lastName
+            }
+            await newUser.save()
+    
+            const token = jwt.sign({email: newUser.email,id:newUser._id},confidential.SECRET_KEY)
+            return {"message":"User Registered","token":token}
         }
-        newUser.save()
-
-        const token = jwt.sign({email: newUser.email,id:newUser._id},confidential.SECRET_KEY)
-        return {"message":"User Registered","token":token}
+        catch(err){
+                console.log(err)
+                return {"message":"Not enough details provided"}
+        }
+        
     }
 }
 
@@ -467,7 +475,7 @@ async function loginUser(email,password){
         return {"message":"Wrong Password"}
     }
 
-    const token = await jwt.sign({email:possibleUser.email,password:possibleUser._id},confidential.SECRET_KEY)
+    const token = await jwt.sign({email:possibleUser.email,id:possibleUser._id},confidential.SECRET_KEY)
     return {"message":"User Logged In","token":token}
 }
 
