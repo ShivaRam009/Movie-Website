@@ -436,10 +436,14 @@ async function getReviewsByMovieId(movieid){
 }
 
 async function registerUser(registrationForm){
-    var possibleUser = await User.findOne({email:registrationForm["email"]})
-    if(possibleUser){
-        console.log(possibleUser)
-        return "User already exists"
+    var possibleUser1 = await User.findOne({email:registrationForm["email"]})
+    var possibleUser2 = await User.findOne({username:registrationForm["username"]})
+    if(possibleUser1){
+        console.log(possibleUser1)
+        return {message:"User already exists"}
+    }
+    else if(possibleUser2){
+        return {message:"Username is already in use"}
     }
     else{
         
@@ -486,8 +490,6 @@ async function getUserByEmail(email){
     }
     return {"message":"User Not Found"}
 }
-
-
 
 
 
