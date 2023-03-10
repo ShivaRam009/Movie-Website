@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { response } from 'express';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class RegistrationPageComponent {
 
   samePass=true;
 
-  notEnoughDetails=false;
+  sameEmail=false;
 
   temp:any;
 
@@ -43,8 +44,8 @@ export class RegistrationPageComponent {
 
     this.http.post("http://localhost:9000/registerUser",this.registrationForm.value).subscribe(resp=>{
       this.temp=resp
-      if(this.temp.message=="Not enough details provided"){
-        this.notEnoughDetails=true
+      if(this.temp.message=="User Registered"){
+        this.sameEmail=true
       }
       console.log(resp)
       localStorage.setItem('userToken',this.temp.token)
