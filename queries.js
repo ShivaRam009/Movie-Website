@@ -445,8 +445,14 @@ async function registerUser(registrationForm){
         registrationForm["password"]= await bcrypt.hash(registrationForm["password"],10)
         
         const newUser = await new User(registrationForm)
-        if(!("displayName" in registerForm)){
+        if(!("displayName" in registrationForm || newUser.displayame=="")){
             newUser.displayName=newUser.firstName+" "+newUser.lastName
+        }
+        if(newUser.dob!=undefined){
+            birth_year=Number(newUser.dob.toISOString().substring(0, 4));
+            var today = new Date();
+            this_year=Number(today.toISOString().substring(0, 4));
+            newUser.age=this_year-birth_year
         }
         newUser.save()
 
