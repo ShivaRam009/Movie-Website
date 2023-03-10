@@ -52,4 +52,5 @@
         <button class="submit">Submit</button>
     </form>
     <p *ngIf="!samePass" id="warning1">Entered different passwords</p>
+    <p *ngIf="!sameEmail" id="warning1">{{this.temp.message}}</p>
 </div>
