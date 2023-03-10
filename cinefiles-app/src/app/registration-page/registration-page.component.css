@@ -102,3 +102,6 @@ button:hover{
     font-size: 1rem;
     margin:0;
 }
+#warning{
+    color:red;
+}
