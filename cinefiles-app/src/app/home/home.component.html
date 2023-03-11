@@ -13,13 +13,11 @@
         </li>
         <li>
             <div class="dropdown">
-                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="username">
-                  {{this.userData.username}}
-                </button>
-                <ul class="dropdown-menu menu-items">
-                  <li><button class="dropdown-items">Profile</button></li>
-                  <li><button class="dropdown-items" (click)="logout()">Logout</button></li>
-                </ul>
+                <a href="" class="dropbtn">{{this.userData.username}}</a>
+                <div class="dropdown-content">
+                  <a href="#">Profile</a>
+                  <a href="" (click)="logout()">Logout</a>
+                </div>
             </div>
         </li>
     </ul>  
