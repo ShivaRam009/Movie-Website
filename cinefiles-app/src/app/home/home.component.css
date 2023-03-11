@@ -10,41 +10,62 @@ ul{
     list-style-type: none;
 }
 #searchbar{
-    margin-top: 17px;
+    margin-top: 27px;
     margin-left: 500px;
     width:400px;
-    height: 25px;
+    height: 30px;
     border-radius: 25px ;
+    text-align: center;
  
 }
 #navbar{
     margin-top: 0;
     background-color: #1f4489;
     height: 90px;
-    border: 1px solid #1f4489;;
+    border: 1px solid #1f4489;
+    position: sticky;
     
 }
 #name{
     color:#fcc139;
     font-size: 40px;
-    margin-top: 10px;
+    margin-top: 19px;
     font-family: 'Libre Baskerville', serif;
 
 }
 html{
     margin-top:0;
 }
-.username{
+#username{
     color:#fcc139;
     font-size: 25px;
-    margin-top: 16px;
-    margin-left: 5px;
+    margin-top: 19px;
+    margin-left: 3px;
     position: relative;
+    background: none;
+    border:none;
+    text-align: center;
 }
 #profile-pic{
     height: 35px;
-    margin-top: 14px;
+    margin-top: 21px;
     margin-left: 25px;
     border-radius: 25px;
+}
+.dropdown-items{
+    text-align: center;
+    color:#fcc139;
+    background-color: #1f4489; 
+    border:none;
+}
+.dropdown-menu{
+    background-color: #1f4489;
+    border:2px solid #fcc139;
+    text-align: center;
+}
+
+.dropdown-toggle{
+    margin-top: 21px;
+    
 }
 
