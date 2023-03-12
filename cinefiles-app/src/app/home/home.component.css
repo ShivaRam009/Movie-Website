@@ -22,19 +22,23 @@ ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0;
+    margin: 0px;
     background-color: #1f4489;
     height: 90px;
     border: 1px solid #1f4489;
     position: sticky;
     
 }
+#sidebar ul{
+    margin-top: 0;
+}
 #name{
     color:#fcc139;
     font-size: 40px;
-    margin-top: 19px;
+    margin-top: 31px;
     font-family: 'Libre Baskerville', serif;
     margin-left:15px;
+    cursor:pointer;
 
 }
 html{
@@ -65,6 +69,7 @@ html{
     margin-top: 25px;
     padding:20px;
     margin-right: 20px;
+    cursor:pointer;
 }
 
 .dropdown-content {
@@ -84,7 +89,7 @@ html{
 
 .dropdown-content a{
     display: block;
-    color:#fcc139;
+    color:white;
     padding: 5px 0;
     text-align: center;
     text-decoration: none;
@@ -93,15 +98,71 @@ html{
 
 .dropdown-content a:hover{
     color:#AAC4FF;
-    cursor: pointer;
+    cursor:pointer;
+    /* text-decoration: underline #fcc139 4px; */
 }
 
 .dropdown{
     padding-left:15px;
+ 
 }
 
 .dropbtn{
     text-decoration: none;
-    color:#fcc139;
+    color:white;
     font-size: 20px;
 }
+
+#sidebar{
+    position: fixed;
+    margin-top: 0px;
+    background-color: #1f4489;
+    width: 290px;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+#sidebar li{
+    float:none;
+    padding:3rem;
+    padding-left: 0rem;
+    color: white;
+    font-size: 22px;
+    cursor:pointer;
+}
+
+#sidebar li:hover{
+    /* opacity: 0.7; */
+    text-decoration: underline #fcc139 4px;
+}
+
+.feed{
+    color:black;
+}
+
+#text{
+    color:"black";
+}
+
+
+
+#page-body{
+    color:black;
+}
+
+
+.container{
+    margin:0;
+    
+}
+
+#page-body{
+    font-family: 'Noto Sans', sans-serif ;
+}
+
+li a{
+    text-decoration: none;
+    color: white;
+}
+

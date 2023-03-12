@@ -13,13 +13,42 @@
             <div class="dropdown">
                 <a class="dropbtn">{{this.userData.username}}</a>
                 <div class="dropdown-content">
-                  <a  class="profile">Profile</a>
-                  <a  class="logout" (click)="logout()">Logout</a>
+                  <a class="profile">Profile</a>
+                  <a class="logout" (click)="logout()">Logout</a>
                 </div>
             </div>
         </li>
     </ul>  
 </div>
+
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col" id="sidebar">
+            <ul>
+                <li>
+                    <a routerLink="/home/feed">Home</a>
+                </li>
+                <li>
+                    <a>Watchlist</a>
+                </li>
+                <li>
+                    <a>Liked Movies</a>
+                </li>
+                <li>
+                    <a>Your Reviews</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col" id="page-body">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+</div>
+
+
 
 
 
