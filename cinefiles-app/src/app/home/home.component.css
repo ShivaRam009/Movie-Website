@@ -166,3 +166,43 @@ li a{
     color: white;
 }
 
+*{
+    position: relative;
+}
+
+#heading-pm{
+    position: absolute;
+    top:50px;
+    left: 340px;
+    font-size: 20px;
+    font-weight: 545;
+    text-decoration: underline #fcc139 4px;
+}
+
+#popular-movies{
+    display: inline-block;
+    left:175px;
+    top:80px;
+    padding:15px;
+}
+
+#popular-movies img{
+    height: 250px;
+    width:175px;
+    display: block;
+    margin:0 auto ;
+ 
+}
+
+#popular-movies img:hover{
+    opacity:0.9;
+    border: 4px solid #1f4489;
+ 
+}
+
+.title{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width:175px;
+}
