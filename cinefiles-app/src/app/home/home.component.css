@@ -52,11 +52,12 @@ html{
     margin-left: 25px;
     border-radius: 25px;
 }
-.dropdown-items{
+/* .dropdown-items{
     text-align: center;
     color:#fcc139;
     background-color: #1f4489; 
     border:none;
+    display: block;
 }
 .dropdown-menu{
     background-color: #1f4489;
@@ -67,5 +68,5 @@ html{
 .dropdown-toggle{
     margin-top: 21px;
     
-}
+} */
 

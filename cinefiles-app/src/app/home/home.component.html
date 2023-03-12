@@ -12,14 +12,20 @@
             <img src={{this.userData.profilepic}} id="profile-pic">
         </li>
         <li>
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="username">
                   {{this.userData.username}}
                 </button>
                 <ul class="dropdown-menu menu-items">
-                  <li><button class="dropdown-items">Profile</button></li>
-                  <br>
+                  <li><button class="dropdown-items">Profile</button></li><br>
                   <li><button class="dropdown-items" (click)="logout()">Logout</button></li>
+                </ul>
+              </div> -->
+              <div>
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{this.userData.username}}</button>
+                <ul class="drop-menu">
+                    <li class="dropdown-items">Profile</li><br>
+                    <li class="dropdown-items" (click)="logout()">Logout</li>
                 </ul>
               </div>
         </li>
