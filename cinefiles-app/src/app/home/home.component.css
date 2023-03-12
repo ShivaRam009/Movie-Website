@@ -1,96 +1,37 @@
 *{
     font-family: 'Noto Sans', sans-serif;
+    box-sizing: border-box;
 }
 
-li{
-    float: left;
-    
-}
-ul{
-    list-style-type: none;
-}
-#searchbar{
-    margin-top: 27px;
-    margin-left: 500px;
-    width:400px;
-    height: 30px;
-    border-radius: 25px ;
-    text-align: center;
- 
-}
-#navbar{
-    margin-top: 0;
-    background-color: #1f4489;
-    height: 90px;
-    border: 1px solid #1f4489;
-    position: sticky;
-    
-}
-#name{
-    color:#fcc139;
-    font-size: 40px;
-    margin-top: 19px;
-    font-family: 'Libre Baskerville', serif;
-
-}
-html{
-    margin-top:0;
-}
-#username{
-    color:#fcc139;
-    font-size: 22px;
-    margin-top: 19px;
-    margin-left: 3px;
-    position: relative;
-    background: none;
-    border:none;
-    text-align: center;
-}
-#profile-pic{
-    height: 35px;
-    margin-top: 21px;
-    margin-left: 25px;
-    border-radius: 25px;
-}
-.dropdown{
-    display: inline-block;
-    position:relative;
-    margin-top: 25px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    width:100%;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border: 2px solid black;
-}
-
-.dropdown:hover .dropdown-content{
-    display: block;
-}
-
-
-.dropdown-content a{
-    display: block;
-    color:#fcc139;
-    padding: 5px 0;
-    text-align: center;
-    text-decoration: none;
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color:#1f4489 ;
+    color:#fcc139;
 }
 
-.dropdown-content a:hover{
-    color:#AAC4FF;
+.website-name{
+    font-size: 2.5rem;
+    margin: .5rem;
+}
+
+.nav-items{
+    margin:.5rem;
 }
 
 .dropdown{
-    padding-left:15px;
+    font-size: 1.5rem;
 }
 
-.dropbtn{
-    text-decoration: none;
-    color:#fcc139;
-    font-size: 20px;
+.searchbar input{
+    width:300px;
+    border-radius: 25px;
+    height:25px;
+    text-align: center;
+}
+
+.dropdown img{
+    height: 35px;
+    border-radius: 25px;
 }
