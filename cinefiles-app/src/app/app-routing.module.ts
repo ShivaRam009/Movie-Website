@@ -1,4 +1,4 @@
-import { WatchlistComponent } from './home/watchlist/watchlist.component';
+import { FeedComponent } from './home/feed/feed.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule, Component } from '@angular/core';
@@ -11,10 +11,9 @@ const routes: Routes = [
     component:HomeComponent,
     path:'home',
     children:[
-
       {
-        component:WatchlistComponent,
-        path:'watchlist'
+        component:FeedComponent,
+        path:'feed'
       }
     ]
   },

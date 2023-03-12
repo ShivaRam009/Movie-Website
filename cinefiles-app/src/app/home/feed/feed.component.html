@@ -1,0 +1,9 @@
+
+<a id="heading-pm">POPULAR MOVIES</a>
+<div id="popular-movies" *ngFor="let movie of this.popularMovies">
+    <img src={{movie.poster}} alt="">
+    <div>
+        <p class="title">{{movie.name}}</p>
+        <!-- <div class="tooltip">{{movie.name}}</div> -->
+    </div> 
+</div>

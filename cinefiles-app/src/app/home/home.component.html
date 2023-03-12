@@ -27,13 +27,13 @@
         <div class="col" id="sidebar">
             <ul>
                 <li>
-                    <a routerLink="/home">Home</a>
+                    <a routerLink="/home/feed">Home</a>
                 </li>
                 <li>
-                    <a >Watchlist</a>
+                    <a>Watchlist</a>
                 </li>
                 <li>
-                    <a routerLink="/watchlist">Liked Movies</a>
+                    <a>Liked Movies</a>
                 </li>
                 <li>
                     <a>Your Reviews</a>
@@ -41,26 +41,12 @@
             </ul>
         </div>
         <div class="col" id="page-body">
-            <div *ngIf="this.router.url=='/home'" else elseBlock>
-                <a id="heading-pm">POPULAR MOVIES</a>
-                <div id="popular-movies" *ngFor="let movie of this.popularMovies">
-                    <img src={{movie.poster}} alt="">
-                    <div>
-                        <p class="title">{{movie.name}}</p>
-                        <!-- <div class="tooltip">{{movie.name}}</div> -->
-                    </div> 
-                </div>
-            </div>
-            <ng-template #elseBlock>
-                <router-outlet></router-outlet>
-            </ng-template>
-            
+            <router-outlet></router-outlet>
         </div>
 
     </div>
 
 </div>
-
 
 
 
