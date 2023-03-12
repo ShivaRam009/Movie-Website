@@ -10,8 +10,8 @@ ul{
     list-style-type: none;
 }
 #searchbar{
-    margin-top: 27px;
-    margin-left: 500px;
+    margin: 40px;
+    /*margin-left: 500px;*/
     width:400px;
     height: 30px;
     border-radius: 25px ;
@@ -19,6 +19,9 @@ ul{
  
 }
 #navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 0;
     background-color: #1f4489;
     height: 90px;
@@ -31,6 +34,7 @@ ul{
     font-size: 40px;
     margin-top: 19px;
     font-family: 'Libre Baskerville', serif;
+    margin-left:15px;
 
 }
 html{
@@ -40,7 +44,7 @@ html{
     color:#fcc139;
     font-size: 22px;
     margin-top: 19px;
-    margin-left: 3px;
+    /*margin-left: 3px;*/
     position: relative;
     background: none;
     border:none;
@@ -49,13 +53,17 @@ html{
 #profile-pic{
     height: 35px;
     margin-top: 21px;
-    margin-left: 25px;
+    /*margin-left: 30px;*/
     border-radius: 25px;
+    position: relative;
+    margin-top: 40px;
+    /*margin-right: 20px;*/
 }
 .dropdown{
     display: inline-block;
     position:relative;
     margin-top: 25px;
+    padding:20px;
 }
 
 .dropdown-content {
@@ -65,6 +73,7 @@ html{
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border: 2px solid black;
+
 }
 
 .dropdown:hover .dropdown-content{
@@ -78,7 +87,7 @@ html{
     padding: 5px 0;
     text-align: center;
     text-decoration: none;
-    background-color:#1f4489 ;
+    background-color:#1f4489;
 }
 
 .dropdown-content a:hover{
