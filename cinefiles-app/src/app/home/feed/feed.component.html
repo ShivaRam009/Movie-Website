@@ -1,16 +1,13 @@
-<div class="relative">
-    <p class="absolute font-semibold text-lg top-8 left-80 underline decoration-[#fcc139] decoration-4">POPULAR MOVIES</p>
-    <div class="absolute grid grid-cols-4 gap-4 top-20 left-80">
-        <div *ngFor="let movie of this.popularMovies">
-            <div class="">
-                <img src={{movie.poster}} alt="" class="h-72 w-60 hover:border-4 border-[#1f4489]">
-                <p class="font-semibold">{{movie.name}}</p>
-                <p>heyy</p>
-            </div>
-        </div>
+
+<a id="heading-pm">POPULAR MOVIES</a>
+
+
+
+    <div id="popular-movies" class="" *ngFor="let movie of this.popularMovies">
+        <img src={{movie.poster}} alt="" class="hover:border-4 border-[#1f4489] hover:opacity-90">
+        <div>
+            <p class="title overflow-hidden">{{movie.name}}</p>
+            <!-- <div class="tooltip">{{movie.name}}</div> -->
+        </div> 
     </div>
-    
-</div>
-
-
 
