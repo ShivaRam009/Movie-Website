@@ -16,6 +16,7 @@ ul{
     height: 30px;
     border-radius: 25px ;
     text-align: center;
+    /*margin-left: 10px;*/
  
 }
 #navbar{
@@ -100,6 +101,11 @@ html{
     color:#AAC4FF;
     cursor:pointer;
     /* text-decoration: underline #fcc139 4px; */
+}
+
+.btn{
+    margin-right: 20px;
+
 }
 
 .dropdown{
