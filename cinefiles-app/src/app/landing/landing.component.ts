@@ -14,7 +14,6 @@ export class LandingComponent {
   constructor(private http:HttpClient,private router:Router){
 
   }
-  
   temp:any
   loginForm=new FormGroup({
     email:new FormControl(),
@@ -32,7 +31,6 @@ export class LandingComponent {
       localStorage.setItem('userToken',this.temp.token)
       if(this.temp.token!=undefined){
         this.router.navigate(['/home']);
-        
       }
     }))
   }

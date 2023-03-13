@@ -41,7 +41,6 @@ export class HomeComponent {
 
   logout(){
     localStorage.clear()
-    console.log("basjao")
     this.router.navigate(['/'])
   }
 
