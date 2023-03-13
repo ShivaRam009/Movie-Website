@@ -491,6 +491,10 @@ async function getUserByEmail(email){
     return {"message":"User Not Found"}
 }
 
+async function searchMovie(movieName){
+    const movies = await Movie.find({"name":{$regex: movieName, $options: "$i"}})
+    return movies
+}
 
 
 
@@ -522,3 +526,4 @@ module.exports.getReviewsByMovieId=getReviewsByMovieId
 module.exports.registerUser=registerUser
 module.exports.loginUser=loginUser
 module.exports.getUserByEmail=getUserByEmail
+module.exports.searchMovie=searchMovie

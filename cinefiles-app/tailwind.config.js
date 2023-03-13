@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors:{
         'blockbuster-blue':'#1f4489',
+        'blockbuster-yellow':'#fcc139'
       },
     },
   },

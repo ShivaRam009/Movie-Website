@@ -102,6 +102,13 @@ app.get("/getReviewById/:reviewId",(req,res)=>{
     })
 })
 
+app.get("/searchMovie/:movieName",(req,res)=>{
+    movie=req.params.movieName
+    queries.searchMovie(movie).then(response=>{
+        res.send(response)
+    })
+})
+
 //delete methods
 app.delete("/deleteUser/:username",(req,res)=>{
     username=req.params.username
