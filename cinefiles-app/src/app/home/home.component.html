@@ -43,28 +43,7 @@
                 </li>
             </ul>
         </div>
-        <div class="flex items-center">
-            <div>
-                <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-8">
-            </div>
-            <div class="p-2">
-                <button class="text-black bg-[#fcc139] p-1 rounded ">SEARCH</button>
-            </div>
-        </div>
-        <div class="items-center flex">
-            <div>
-                <img src={{this.userData.profilepic}} alt="" class="h-12 rounded-full">
-            </div>
-            <div class="p-1 text-white text-2xl relative">
-                <button class="dropdown" id="username">
-                    {{this.userData.username}}
-                    <div class="dropdown-content bg-[#1f4489] p-3">
-                        <a class="profile p-2">Profile</a>
-                        <br>
-                        <a class="logout" (click)="logout()">Logout</a>
-                      </div>
-                </button>
-            </div>
+        <div class="col" id="page-body">
         </div>
     </div>
 </div>

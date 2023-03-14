@@ -9,7 +9,8 @@ const routes: Routes = [
   {
     component:HomeComponent,
     path:'home',
- 
+    children:[
+    ]
   },
   {
     component:LandingComponent,
