@@ -25,7 +25,11 @@ ul{
     background-color: #1f4489;
     height: 90px;
     border: 1px solid #1f4489;
-    position: sticky;
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index:1;
+    
     
 }
 #sidebar ul{
@@ -114,6 +118,7 @@ html{
 
 #sidebar{
     position: fixed;
+    top: 90px;
     margin-top: 0px;
     background-color: #1f4489;
     width: 290px;
@@ -163,5 +168,9 @@ html{
 li a{
     text-decoration: none;
     color: white;
+}
+
+#parent{
+    height:auto;
 }
 
