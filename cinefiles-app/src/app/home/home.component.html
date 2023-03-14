@@ -1,53 +1,32 @@
-<div id="parent">
-
-
-<div id="navbar">
-    <h2 id="name">CINE FILES</h2>
-    <ul>    
-        <li>
-            <form action="">
-                <input type="text" id="searchbar" placeholder="Search Movie">
-            </form>
-        </li>
-        <li>
-            <img src={{this.userData.profilepic}} id="profile-pic">
-        </li>
-        <li>
-            <div class="dropdown">
-                <a class="dropbtn">{{this.userData.username}}</a>
-                <div class="dropdown-content">
-                  <a class="profile">Profile</a>
-                  <a class="logout" (click)="logout()">Logout</a>
-                </div>
-            </div>
-        </li>
-    </ul>  
-</div>
-</div>
-
-<div class="container text-center">
-    <div class="row">
-        <div class="col" id="sidebar">
-            <ul class="flex flex-col justify-around">
-                <li>
-                    <a routerLink="/home/feed">Home</a>
-                </li>
-                <li>
-                    <a routerLink="/home/watchlist">Watchlist</a>
-                </li>
-                <li>
-                    <a>Liked Movies</a>
-                </li>
-                <li>
-                    <a>Your Reviews</a>
-                </li>
-            </ul>
+<div>
+    <div class="flex justify-between bg-[#1f4489] p-8 items-center">
+        <div class="text-[#fcc139] text-5xl" id="name">
+            CINE FILES
         </div>
-        <div class="col" id="page-body">
+        <div class="flex items-center">
+            <div>
+                <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-8">
+            </div>
+            <div class="p-2">
+                <button class="text-black bg-[#fcc139] p-1 rounded ">SEARCH</button>
+            </div>
+        </div>
+        <div class="items-center flex">
+            <div>
+                <img src={{this.userData.profilepic}} alt="" class="h-12 rounded-full">
+            </div>
+            <div class="p-1 text-white text-2xl relative">
+                <button class="dropdown" id="username">
+                    {{this.userData.username}}
+                    <div class="dropdown-content bg-[#1f4489] p-3">
+                        <a class="profile p-2">Profile</a>
+                        <br>
+                        <a class="logout" (click)="logout()">Logout</a>
+                      </div>
+                </button>
+            </div>
         </div>
     </div>
 </div>
-
-
 
 

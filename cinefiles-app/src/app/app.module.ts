@@ -11,7 +11,12 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 
 
 @NgModule({
-  declarations: [ ],
+  declarations: [ 
+    AppComponent,
+    HomeComponent,
+    LandingComponent,
+    RegistrationPageComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
