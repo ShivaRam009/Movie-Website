@@ -13,6 +13,7 @@
 
 #popular-movies{
     display: inline-block;
+    /* left: 105px; */
     top:80px;
     padding:15px;
 }

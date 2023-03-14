@@ -9,4 +9,8 @@ import { Router } from '@angular/router';
 export class WatchlistComponent {
   constructor(private http:HttpClient,private router:Router){
   }
+  watchlist:Array<any> | undefined;
+  ngonInit(){
+    
+  }
 }
