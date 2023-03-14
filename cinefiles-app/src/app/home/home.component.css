@@ -1,168 +1,21 @@
-*{
-    font-family: 'Noto Sans', sans-serif;
-}
-
-li{
-    float: left;
-    
-}
-ul{
-    list-style-type: none;
-}
-#searchbar{
-    margin: 40px;
-    /*margin-left: 500px;*/
-    width:400px;
-    height: 30px;
-    border-radius: 25px ;
-    text-align: center;
- 
-}
-#navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0px;
-    background-color: #1f4489;
-    height: 90px;
-    border: 1px solid #1f4489;
-    position: sticky;
-    
-}
-#sidebar ul{
-    margin-top: 0;
-}
-#name{
-    color:#fcc139;
-    font-size: 40px;
-    margin-top: 31px;
-    font-family: 'Libre Baskerville', serif;
-    margin-left:15px;
-    cursor:pointer;
-
-}
-html{
-    margin-top:0;
-}
-#username{
-    color:#fcc139;
-    font-size: 22px;
-    margin-top: 19px;
-    /*margin-left: 3px;*/
-    position: relative;
-    background: none;
-    border:none;
-    text-align: center;
-}
-#profile-pic{
-    height: 35px;
-    margin-top: 21px;
-    /*margin-left: 30px;*/
-    border-radius: 25px;
-    position: relative;
-    margin-top: 40px;
-    /*margin-right: 20px;*/
-}
 .dropdown{
     display: inline-block;
     position:relative;
-    margin-top: 25px;
-    padding:20px;
-    margin-right: 20px;
     cursor:pointer;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    width:100%;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* overflow: auto; */
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     border: 2px solid black;
-
 }
 
 .dropdown:hover .dropdown-content{
     display: block;
 }
 
-
-.dropdown-content a{
-    display: block;
-    color:white;
-    padding: 5px 0;
-    text-align: center;
-    text-decoration: none;
-    background-color:#1f4489;
+#name{
+    font-family: 'Libre Baskerville', serif;
 }
-
-.dropdown-content a:hover{
-    color:#AAC4FF;
-    cursor:pointer;
-    /* text-decoration: underline #fcc139 4px; */
-}
-
-.dropdown{
-    padding-left:15px;
- 
-}
-
-.dropbtn{
-    text-decoration: none;
-    color:white;
-    font-size: 20px;
-}
-
-#sidebar{
-    position: fixed;
-    margin-top: 0px;
-    background-color: #1f4489;
-    width: 290px;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-}
-
-#sidebar li{
-    float:none;
-    padding:3rem;
-    padding-left: 0rem;
-    color: white;
-    font-size: 22px;
-    cursor:pointer;
-}
-
-#sidebar li:hover{
-    /* opacity: 0.7; */
-    text-decoration: underline #fcc139 4px;
-}
-
-.feed{
-    color:black;
-}
-
-#text{
-    color:"black";
-}
-
-
-
-#page-body{
-    color:black;
-}
-
-
-.container{
-    margin:0;
-    
-}
-
-#page-body{
-    font-family: 'Noto Sans', sans-serif ;
-}
-
-li a{
-    text-decoration: none;
-    color: white;
-}
-

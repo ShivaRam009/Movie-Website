@@ -10,5 +10,10 @@ module.exports = {
       },
     },
   },
+  variants:{
+    extends:{
+      display:['group-focus']
+    },
+  },
   plugins: [],
 }
