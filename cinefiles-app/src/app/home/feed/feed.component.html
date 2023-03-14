@@ -1,6 +1,6 @@
-<div class="relative">
+
     <p class="absolute font-semibold text-lg top-8 left-80 underline decoration-[#fcc139] decoration-4">POPULAR MOVIES</p>
-    <div class="absolute grid grid-cols-4 gap-4 top-20 left-80">
+    <div class="grid grid-cols-4 gap-4">
         <div *ngFor="let movie of this.popularMovies">
             <div class="">
                 <img src={{movie.poster}} alt="" class="h-72 w-60 hover:border-4 border-[#1f4489]">
@@ -9,5 +9,5 @@
         </div>
     </div>
     
-</div>
+
 
