@@ -30,7 +30,6 @@ export class FeedComponent {
     this.http.get("http://localhost:9000/getMovieById/64047919ca0ff1f87c2bd794").subscribe(response=>{
       this.temp=response 
       this.popularMovies.push(this.temp)
-      console.log(this.popularMovies)
     })
 
    

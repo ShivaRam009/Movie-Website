@@ -170,6 +170,9 @@ async function watchList(movieid,username){
     const movie=await Movie.findById(movieid)
     const user=await User.findOne({"username":username})
     if(user!=null && movie!=null){
+        if(user.watchlist.includes(movieid)){
+            return "Movie already exists"
+        }
         user.watchlist.push(movie.id)
         await user.save()
         return "movie added to watchlist"
@@ -492,7 +495,13 @@ async function getUserByEmail(email){
 }
 
 
-
+async function getWatchlistOfUser(username){
+    const user=await User.findOne({"username":username})
+    if(user!=null){
+        return user.watchlist
+    }
+    return {"message":"User Not Found"}
+}
 
 
 
@@ -522,3 +531,4 @@ module.exports.getReviewsByMovieId=getReviewsByMovieId
 module.exports.registerUser=registerUser
 module.exports.loginUser=loginUser
 module.exports.getUserByEmail=getUserByEmail
+module.exports.getWatchlistOfUser=getWatchlistOfUser
