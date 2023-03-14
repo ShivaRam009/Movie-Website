@@ -46,7 +46,7 @@ const user = new mongoose.Schema({
     dob:Date,
     createdOn:{
         type:Date,
-        default:new Date().toLocaleDateString()
+        default:new Date().toISOString()
     },
     username:{
         type:String,

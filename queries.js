@@ -170,6 +170,9 @@ async function watchList(movieid,username){
     const movie=await Movie.findById(movieid)
     const user=await User.findOne({"username":username})
     if(user!=null && movie!=null){
+        if(user.watchlist.includes(movieid)){
+            return "Movie already exists"
+        }
         user.watchlist.push(movie.id)
         await user.save()
         return "movie added to watchlist"

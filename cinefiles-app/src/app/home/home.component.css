@@ -28,6 +28,7 @@ ul{
     height: 90px;
     border: 1px solid #1f4489;
     position: sticky;
+    top:0px;
     
 }
 #sidebar ul{
