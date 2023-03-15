@@ -503,6 +503,15 @@ async function getWatchlistOfUser(username){
     return {"message":"User Not Found"}
 }
 
+async function searchMovie(movie){
+    const movies = await Movie.find({ 'name' : { '$regex' :movie, '$options' : 'i' }})
+
+    if(movies.length==0){
+        return {"message":"No Results Found"}
+    }
+    return movies
+}
+
 
 
 
@@ -532,3 +541,4 @@ module.exports.registerUser=registerUser
 module.exports.loginUser=loginUser
 module.exports.getUserByEmail=getUserByEmail
 module.exports.getWatchlistOfUser=getWatchlistOfUser
+module.exports.searchMovie=searchMovie

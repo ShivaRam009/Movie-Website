@@ -23,11 +23,7 @@
                 <button class="dropdown" id="username">
                     {{this.userData.username}}
                     <div class="dropdown-content bg-[#1f4489] p-2">
-<<<<<<< HEAD
-                        <a class="profile p-2">Profile</a>
-=======
                         <a class="profile p-2 hover:text-[#fcc139] active:text-[#fcc139]">Profile</a>
->>>>>>> 7ea3d4bfadc1b17104b4ff37b844ef03ef400afd
                         <br>
                         <hr>
                         <a class="logout hover:text-[#fcc139] active:text-[#fcc139]" (click)="logout()">Logout</a>
@@ -43,17 +39,20 @@
                             <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10" formControlName="searchTerm">
                         </div>
                         <div class="p-2">
-                            <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300">SEARCH</button>
+                            <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300" routerLink="/home/search">SEARCH</button>
                         </div>
                 </div>
         </div>
     </form>
 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 7ea3d4bfadc1b17104b4ff37b844ef03ef400afd
-<router-outlet></router-outlet>
+<div *ngIf="this.router.url=='/home/watchlist'">
+    <app-watchlist></app-watchlist>
+</div>
+
+<div *ngIf="this.router.url=='/home/search'">
+    <app-search-results [searchTerm]="this.searchbarForm.value.searchTerm"></app-search-results>
+</div>
 <!--<div class="flex flex-col justify-around bg-[#1f4489] p-7 w-1/5 h-screen items-center">
     <a class="text-[#fcc139] text-3xl hover:underline active:underline">Home</a>
     <a class="text-[#fcc139] text-3xl hover:underline active:underline">Watchlist</a>

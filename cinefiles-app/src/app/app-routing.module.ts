@@ -14,6 +14,10 @@ const routes: Routes = [
       {
         component:WatchlistComponent,
         path:'watchlist'
+      },
+      {
+        component:SearchResultsComponent,
+        path:'search'
       }
     ]
   },

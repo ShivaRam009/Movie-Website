@@ -1,3 +1,4 @@
+import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +18,8 @@ import { WatchlistComponent } from './home/watchlist/watchlist.component';
     HomeComponent,
     LandingComponent,
     RegistrationPageComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

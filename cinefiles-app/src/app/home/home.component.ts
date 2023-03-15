@@ -11,7 +11,7 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class HomeComponent {
   token:any
-  constructor(private router:Router,private http:HttpClient,private searchservice:SearchService){
+  constructor(public router:Router,private http:HttpClient,private searchservice:SearchService){
 
   }
   userEmail:any
@@ -52,6 +52,6 @@ export class HomeComponent {
   }
 
   search(){
-    this.router.navigate(['/home/search-results'])
+    this.router.navigate(['/home/search/'+this.searchbarForm.value.searchTerm])
   }
 }
