@@ -14,8 +14,16 @@ export class SearchResultsComponent implements OnChanges {
 
   }
   term:any
+  temp:any
+  searchResults:any
   ngOnChanges(changes: SimpleChanges): void {
     this.term=this.searchTerm
+    this.http.get("http://localhost:9000/searchMovie/"+this.term).subscribe((response)=>{
+      console.log(response)
+      this.temp=response
+      this.searchResults=this.temp
+    
+    })
   }
 
   

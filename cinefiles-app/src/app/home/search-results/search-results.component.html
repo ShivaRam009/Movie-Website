@@ -1,1 +1,8 @@
-<p>{{this.term}}</p>
+<h1 class="m-7 t-4 text-2xl underline underline-offset-8 decoration-[#fcc139]">RESULTS</h1><br><br>
+<div class="grid grid-cols-6 justify-around ml-6">
+    <div *ngFor="let movie of this.searchResults" >
+        <img src="{{this.movie.poster}}" alt="" class="h-56 w-44 hover:border border-[#1f4489] border-4">
+        <p class="ml-9 font-bold">{{this.movie.name}}</p>
+        <br>
+    </div>
+</div>
