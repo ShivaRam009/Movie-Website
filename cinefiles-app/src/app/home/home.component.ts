@@ -15,8 +15,6 @@ export class HomeComponent {
   userEmail:any
   temp:any
   userData:any
-  eszds:any
-  adasa:any
   
   async ngOnInit(){
     this.token=localStorage.getItem('userToken')
