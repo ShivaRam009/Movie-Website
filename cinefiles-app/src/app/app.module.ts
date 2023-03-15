@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
-import { SearchResultsComponent } from './home/search-results/search-results.component';
+import { WatchlistComponent } from './home/watchlist/watchlist.component';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { SearchResultsComponent } from './home/search-results/search-results.com
     HomeComponent,
     LandingComponent,
     RegistrationPageComponent,
-    SearchResultsComponent
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
