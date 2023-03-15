@@ -18,6 +18,7 @@ export class HomeComponent {
   temp:any
   userData:any
   searchResults:any
+  popularMovies:Array<any>=[]
 
   searchbarForm=new FormGroup({
     searchTerm: new FormControl()
@@ -70,7 +71,7 @@ export class HomeComponent {
 
     this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
       this.popularMovies.push(resp);
-    })
+    })
 
 
 
