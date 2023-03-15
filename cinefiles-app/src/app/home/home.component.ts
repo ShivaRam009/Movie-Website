@@ -15,6 +15,9 @@ export class HomeComponent {
   userEmail:any
   temp:any
   userData:any
+  popularMovies:Array<any>=[]
+
+
   
   async ngOnInit(){
     this.token=localStorage.getItem('userToken')
@@ -33,9 +36,40 @@ export class HomeComponent {
         this.temp=resp 
         this.userData=this.temp
       })
-
       
     })
+
+    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+
+    this.http.get("http://localhost:9000/getMovieById/64047202b305f319df7b1c87").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+    this.http.get("http://localhost:9000/getMovieById/640475a2ca0ff1f87c2bd76e").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
+      this.popularMovies.push(resp);
+    })
+
+
+
 
   }
 
