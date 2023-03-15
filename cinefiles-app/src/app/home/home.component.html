@@ -7,7 +7,7 @@
             <a class=" text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Home</a>
         </div>
         <div class="text-white">
-            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Watchlist</a>
+            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer"  routerLink='/home/watchlist'>Watchlist</a>
         </div>
         <div class="text-white">
             <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Favourites</a>
@@ -32,16 +32,18 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center  bg-[#1f4489] p-3">
-        <div class="flex items-center m-auto">
-            <div>
-                <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10 " id="searchbar">
-            </div>
-            <div class="p-2">
-                <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300">SEARCH</button>
-            </div>
+    <form action="" [formGroup]="searchbarForm" (ngSubmit)="search()">
+        <div class="flex items-center  bg-[#1f4489] p-3 ">
+                <div class="flex  items-center m-auto">
+                        <div>
+                            <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10" formControlName="searchTerm">
+                        </div>
+                        <div class="p-2">
+                            <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300" routerLink="/home/search">SEARCH</button>
+                        </div>
+                </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <div class="flex flex-col p-3 items-center">
@@ -55,5 +57,17 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="this.router.url=='/home/watchlist'">
+    <app-watchlist></app-watchlist>
+</div>
+
+<div *ngIf="this.router.url=='/home/search'">
+    <app-search-results [searchTerm]="this.searchbarForm.value.searchTerm"></app-search-results>
+</div>
+
+<router-outlet></router-outlet>
+
+
 
 
