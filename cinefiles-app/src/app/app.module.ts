@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { SearchResultsComponent } from './home/search-results/search-results.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     AppComponent,
     HomeComponent,
     LandingComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@
             <div class="p-1 text-white text-2xl relative">
                 <button class="dropdown" id="username">
                     {{this.userData.username}}
-                    <div class="dropdown-content bg-[#1f4489] p-3">
+                    <div class="dropdown-content bg-[#1f4489] p-2">
                         <a class="profile p-2">Profile</a>
                         <br>
                         <a class="logout" (click)="logout()">Logout</a>
@@ -31,19 +31,21 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center  bg-[#1f4489] p-3">
-        <div class="flex items-center m-auto">
-            <div>
-                <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10 ">
-            </div>
-            <div class="p-2">
-                <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300">SEARCH</button>
-            </div>
+    <form action="" [formGroup]="searchbarForm" (ngSubmit)="search()">
+        <div class="flex items-center  bg-[#1f4489] p-3 ">
+                <div class="flex  items-center m-auto">
+                        <div>
+                            <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10" formControlName="searchTerm">
+                        </div>
+                        <div class="p-2">
+                            <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300">SEARCH</button>
+                        </div>
+                </div>
         </div>
-    </div>
+    </form>
 </div>
 
-
+<router-outlet></router-outlet>
 <!--<div class="flex flex-col justify-around bg-[#1f4489] p-7 w-1/5 h-screen items-center">
     <a class="text-[#fcc139] text-3xl hover:underline active:underline">Home</a>
     <a class="text-[#fcc139] text-3xl hover:underline active:underline">Watchlist</a>

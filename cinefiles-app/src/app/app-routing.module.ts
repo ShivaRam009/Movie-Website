@@ -1,3 +1,4 @@
+import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule, Component } from '@angular/core';
@@ -10,6 +11,10 @@ const routes: Routes = [
     component:HomeComponent,
     path:'home',
     children:[
+      {
+        component:SearchResultsComponent,
+        path:'search-results'
+      }
     ]
   },
   {
