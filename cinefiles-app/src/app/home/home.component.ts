@@ -1,7 +1,9 @@
+import { SearchService } from './../search.service';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,16 +11,18 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   token:any
-  constructor(private router:Router,private http:HttpClient){
+  constructor(public router:Router,private http:HttpClient,private searchservice:SearchService){
 
   }
   userEmail:any
   temp:any
   userData:any
-  popularMovies:Array<any>=[]
+  searchResults:any
 
+  searchbarForm=new FormGroup({
+    searchTerm: new FormControl()
+  })
 
-  
   async ngOnInit(){
     this.token=localStorage.getItem('userToken')
     var headers_object = new HttpHeaders({
@@ -76,5 +80,9 @@ export class HomeComponent {
   logout(){
     localStorage.clear()
     this.router.navigate(['/'])
+  }
+
+  search(){
+    this.router.navigate(['/home/search/'+this.searchbarForm.value.searchTerm])
   }
 }

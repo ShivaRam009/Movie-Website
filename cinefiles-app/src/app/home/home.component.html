@@ -7,7 +7,7 @@
             <a class=" text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Home</a>
         </div>
         <div class="text-white">
-            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Watchlist</a>
+            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer" routerLink='/home/watchlist'>Watchlist</a>
         </div>
         <div class="text-white">
             <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Favourites</a>
@@ -23,25 +23,31 @@
                 <button class="dropdown" id="username">
                     {{this.userData.username}}
                     <div class="dropdown-content bg-[#1f4489] p-2">
-                        <a class="profile ">Profile</a>
+                        <a class="profile p-2 hover:text-[#fcc139] active:text-[#fcc139]">Profile</a>
                         <br>
                         <hr>
-                        <a class="logout " (click)="logout()">Logout</a>
+                        <a class="logout hover:text-[#fcc139] active:text-[#fcc139]" (click)="logout()">Logout</a>
                       </div>
                 </button>
             </div>
         </div>
     </div>
-    <div class="flex items-center  bg-[#1f4489] p-3">
-        <div class="flex items-center m-auto">
-            <div>
-                <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10 " id="searchbar">
-            </div>
-            <div class="p-2">
-                <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300">SEARCH</button>
-            </div>
+    <form action="" [formGroup]="searchbarForm" (ngSubmit)="search()">
+        <div class="flex items-center  bg-[#1f4489] p-3 ">
+                <div class="flex  items-center m-auto">
+                        <div>
+                            <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-10" formControlName="searchTerm">
+                        </div>
+                        <div class="p-2">
+                            <button class="text-black bg-[#fcc139] p-1 rounded hover:bg-yellow-300" routerLink="/home/search">SEARCH</button>
+                        </div>
+                </div>
         </div>
-    </div>
+    </form>
+</div>
+
+<div *ngIf="this.router.url=='/home/watchlist'">
+    <app-watchlist></app-watchlist>
 </div>
 
 <div class="flex flex-col p-3 items-center">
@@ -53,36 +59,17 @@
                 <p class="font-semibold text-center">{{movie.name}}</p>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
-<!--<div>
-    <p class="font-semibold text-lg top-8 underline decoration-[#fcc139] decoration-4">POPULAR MOVIES</p>
-    <div class="grid grid-cols-4 gap-4 top-20">
-        <div *ngFor="let movie of this.popularMovies">
-            <div class="">
-                <img src={{movie.poster}} alt="" class="h-72 w-60 hover:border-4 border-[#1f4489]">
-                <p class="font-semibold">{{movie.name}}</p>
-            </div>
-        </div>
-    </div>
-
-</div>-->
+<div *ngIf="this.router.url=='/home/watchlist'">
+    <app-watchlist></app-watchlist>
+</div>
 
 
-<!--<div class="flex flex-col justify-around bg-[#1f4489] p-7 w-1/5 h-screen items-center">
-    <a class="text-[#fcc139] text-3xl hover:underline active:underline">Home</a>
-    <a class="text-[#fcc139] text-3xl hover:underline active:underline">Watchlist</a>
-    <a class="text-[#fcc139] text-3xl hover:underline active:underline">Favourites</a>
-    <a class="text-[#fcc139] text-3xl hover:underline active:underline">Liked Movies</a>
-</div>-->
 
-<!--<div class="flex items-center">
-    <div>
-        <input type="text" placeholder="Search Movies" class="w-96 rounded-full text-center h-8">
-    </div>
-    <div class="p-2">
-        <button class="text-black bg-[#fcc139] p-1 rounded ">SEARCH</button>
-    </div>
-</div>-->
+<div *ngIf="this.router.url=='/home/search'">
+    <app-search-results [searchTerm]="this.searchbarForm.value.searchTerm"></app-search-results>
+</div>
+
 

@@ -1,3 +1,4 @@
+import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { WatchlistComponent } from './home/watchlist/watchlist.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     AppComponent,
     HomeComponent,
     LandingComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    WatchlistComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

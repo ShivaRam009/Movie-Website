@@ -297,6 +297,14 @@ app.get("/getWatchlistOfUser/:username",(req,res)=>{
     })
 })
 
+app.get("/searchMovie/:movieName",(req,res)=>{
+    movie=req.params.movieName
+
+    queries.searchMovie(movie).then(response=>{
+        res.send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
