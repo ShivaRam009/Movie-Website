@@ -1,10 +1,8 @@
-<div class="relative mt-36">
-    <p class="absolute font-semibold text-lg left-80 underline decoration-[#fcc139] decoration-4">WATCHLIST</p>
-    <div class="absolute grid grid-cols-4 justify-evenly top-20 left-80">
-        <div *ngFor="let movie of this.movies">
-            <div class="">
-                <img src={{movie.poster}} alt="" class="xl:h-64 2xl:h-80 2xl:w-60 hover:border-4 border-[#1f4489]">
-                <p class="font-semibold">{{movie.name}}</p>
-            </div>
-        </div>
+<h1 class="m-7 t-4 text-2xl underline underline-offset-8">WATCHLIST</h1><br><br>
+<div class="grid grid-cols-6 justify-around m-7">
+    <div *ngFor="let movie of this.movies" >
+        <img src="{{this.movie.poster}}" alt="" class="h-56 w-44">
+        <p>{{this.movie.name}}</p>
+        <br>
     </div>
+</div>

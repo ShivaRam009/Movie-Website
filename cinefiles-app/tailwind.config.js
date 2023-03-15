@@ -4,10 +4,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {
-      colors:{
-        'blockbuster-blue':'#1f4489',
-      },
+    extend: {},
+  },
+  variants:{
+    extends:{
+      display:['group-focus']
     },
   },
   plugins: [],
