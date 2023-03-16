@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router'
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnChanges {
-  @Input() searchTerm:string | undefined;
+  @Input() toggle:boolean | undefined;
   constructor(private http:HttpClient, private home:HomeComponent,private route:ActivatedRoute){
 
   }
@@ -17,7 +17,7 @@ export class SearchResultsComponent implements OnChanges {
   temp:any
   searchResults:any
   ngOnChanges(changes: SimpleChanges): void {
-    this.term=this.searchTerm
+    this.term=this.home.searchbarForm.value.searchTerm
     this.http.get("http://localhost:9000/searchMovie/"+this.term).subscribe((response)=>{
       console.log(response)
       this.temp=response

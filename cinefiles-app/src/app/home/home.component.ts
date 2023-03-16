@@ -18,6 +18,7 @@ export class HomeComponent {
   temp:any
   userData:any
   searchResults:any
+  popularMovies:Array<any>=[]
   switch:boolean | undefined
 
   searchbarForm=new FormGroup({
@@ -41,9 +42,13 @@ export class HomeComponent {
         this.temp=resp 
         this.userData=this.temp
       })
-
       
     })
+
+    
+
+
+
 
   }
 

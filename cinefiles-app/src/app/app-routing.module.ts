@@ -5,6 +5,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { WatchlistComponent } from './home/watchlist/watchlist.component';
+import { FeedComponent } from './home/feed/feed.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         component:SearchResultsComponent,
         path:'search'
+      },
+      {
+        component:FeedComponent,
+        path:'feed'
       }
     ]
   },

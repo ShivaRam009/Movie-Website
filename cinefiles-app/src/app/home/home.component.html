@@ -4,10 +4,10 @@
             CINE FILES
         </div>
         <div class="text-white">
-            <a class=" text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Home</a>
+            <a class=" text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer" routerLink="/home">Home</a>
         </div>
         <div class="text-white">
-            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer" routerLink='/home/watchlist'>Watchlist</a>
+            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer"  routerLink='/home/watchlist'>Watchlist</a>
         </div>
         <div class="text-white">
             <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Favourites</a>
@@ -19,14 +19,14 @@
             <div>
                 <img src={{this.userData.profilepic}} alt="" class="h-12 rounded-full">
             </div>
-            <div class="p-1 text-white text-2xl relative">
+            <div class="p-1 text-white text-2xl relative ">
                 <button class="dropdown" id="username">
                     {{this.userData.username}}
                     <div class="dropdown-content bg-[#1f4489] p-2">
-                        <a class="profile p-2 hover:text-[#fcc139] active:text-[#fcc139]">Profile</a>
+                        <a class="profile ">Profile</a>
                         <br>
                         <hr>
-                        <a class="logout hover:text-[#fcc139] active:text-[#fcc139]" (click)="logout()">Logout</a>
+                        <a class="logout " (click)="logout()">Logout</a>
                       </div>
                 </button>
             </div>
@@ -46,6 +46,11 @@
     </form>
 </div>
 
+
+
+
+
+
 <div *ngIf="this.router.url=='/home/watchlist'">
     <app-watchlist></app-watchlist>
 </div>
@@ -53,3 +58,13 @@
 <div *ngIf="this.router.url=='/home/search'">
     <app-search-results [toggle]="this.switch"></app-search-results>
 </div>
+
+<div *ngIf="this.router.url=='/home'">
+    <app-feed></app-feed>
+</div>
+
+
+
+
+
+
