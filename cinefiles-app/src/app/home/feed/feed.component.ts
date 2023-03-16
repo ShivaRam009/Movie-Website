@@ -27,21 +27,9 @@ export class FeedComponent {
       this.popularMovies.push(resp);
     })
 
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
+    this.http.get("http://localhost:9000/getMovieById/6403658d15efb62d86c9d3df").subscribe(resp=>{
       this.popularMovies.push(resp);
     })
-
-    this.http.get("http://localhost:9000/getMovieById/640475a2ca0ff1f87c2bd76e").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
   }
 }
 

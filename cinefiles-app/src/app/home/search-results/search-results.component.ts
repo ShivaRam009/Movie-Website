@@ -16,20 +16,31 @@ export class SearchResultsComponent implements OnChanges {
   term:any
   temp:any
   searchResults:any
+  noResults=false
   ngOnChanges(changes: SimpleChanges): void {
     this.term=this.home.searchbarForm.value.searchTerm
-    this.http.get("http://localhost:9000/searchMovie/"+this.term).subscribe((response)=>{
+    console.log(this.term.length)
+    if(this.term==""){
+      this.noResults=true
+    }
+    else{
+      this.noResults=false
+      this.http.get("http://localhost:9000/searchMovie/"+this.term).subscribe((response)=>{
       console.log(response)
       this.temp=response
       this.searchResults=this.temp
     
     })
+    }
+    
   }
 
   
 
   ngOnInit(){
-    
+    if(this.term==""){
+      this.noResults=true
+    }
   }
 
 

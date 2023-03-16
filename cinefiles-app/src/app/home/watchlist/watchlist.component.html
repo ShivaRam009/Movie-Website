@@ -1,10 +1,10 @@
 <div class="flex flex-col p-3 items-center">
-    <div class="text-lg  text-center text-[#1f4489] font-semibold">WATCHLIST</div>
+    <div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4">WATCHLIST</div>
     <div class="p-4">
         <div class="grid grid-cols-5 justify-around gap-5">
             <div *ngFor="let movie of this.movies">
                 <div class="">
-                    <img src={{movie.poster}} alt="" class="h-72 w-60 hover:border-4 border-[#1f4489]">
+                    <img src={{movie.poster}} alt="" class="h-72 w-56 hover:border-4 border-[#1f4489]">
                     <p class="font-semibold text-center">{{this.movie.name}}</p>
                 </div>
             </div>
