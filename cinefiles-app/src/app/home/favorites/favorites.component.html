@@ -1,14 +1,15 @@
 <div class="flex flex-col p-3 items-center" *ngIf="this.movies.length!=0">
-    <div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4">WATCHLIST</div>
+    <div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4">FAVORITES</div>
     <div class="p-4">
         <div class="grid grid-cols-5 justify-around gap-5">
             <div *ngFor="let movie of this.movies">
                 <div class="">
-                    <img src={{movie.poster}} alt="" class="h-72 w-56 hover:border-4 border-[#1f4489]">
+                    <img src={{movie.poster}} alt="" class="h-72 w-60 hover:border-4 border-[#1f4489]">
                     <p class="font-semibold text-center">{{this.movie.name}}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4" *ngIf="this.movies.length==0">NO MOVIES FOUND IN WATCHLIST</div>
+
+<div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4" *ngIf="this.movies.length==0">NO FAVORITES FOUND</div>

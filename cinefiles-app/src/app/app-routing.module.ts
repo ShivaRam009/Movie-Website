@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { WatchlistComponent } from './home/watchlist/watchlist.component';
 import { FeedComponent } from './home/feed/feed.component';
+import { FavoritesComponent } from './home/favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         component:FeedComponent,
         path:'feed'
+      },
+      {
+        component:FavoritesComponent,
+        path:'favorites'
       }
     ]
   },
