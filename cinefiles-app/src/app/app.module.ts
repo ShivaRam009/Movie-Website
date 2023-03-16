@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { WatchlistComponent } from './home/watchlist/watchlist.component';
+import { FeedComponent } from './home/feed/feed.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { WatchlistComponent } from './home/watchlist/watchlist.component';
     LandingComponent,
     RegistrationPageComponent,
     WatchlistComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
