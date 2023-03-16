@@ -10,7 +10,7 @@
             <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer"  routerLink='/home/watchlist'>Watchlist</a>
         </div>
         <div class="text-white">
-            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Favourites</a>
+            <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer" routerLink='/home/favorites'>Favourites</a>
         </div>
         <div class="text-white">
             <a class="text-2xl hover:text-[#fcc139] active:text-[#fcc139] cursor-pointer">Your Reviews</a>
@@ -61,6 +61,10 @@
 
 <div *ngIf="this.router.url=='/home'">
     <app-feed></app-feed>
+</div>
+
+<div *ngIf="this.router.url=='/home/favorites'">
+    <app-favorites></app-favorites>
 </div>
 
 
