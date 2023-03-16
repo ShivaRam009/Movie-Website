@@ -51,7 +51,7 @@
 </div>
 
 <div *ngIf="this.router.url=='/home/search'">
-    <app-search-results [searchTerm]="this.searchbarForm.value.searchTerm"></app-search-results>
+    <app-search-results [toggle]="this.switch"></app-search-results>
 </div>
 <!--<div class="flex flex-col justify-around bg-[#1f4489] p-7 w-1/5 h-screen items-center">
     <a class="text-[#fcc139] text-3xl hover:underline active:underline">Home</a>
