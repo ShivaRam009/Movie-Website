@@ -18,6 +18,8 @@ export class HomeComponent {
   temp:any
   userData:any
   searchResults:any
+  popularMovies:Array<any>=[]
+  switch:boolean | undefined
 
   searchbarForm=new FormGroup({
     searchTerm: new FormControl()
@@ -40,9 +42,13 @@ export class HomeComponent {
         this.temp=resp 
         this.userData=this.temp
       })
-
       
     })
+
+    
+
+
+
 
   }
 
@@ -52,6 +58,11 @@ export class HomeComponent {
   }
 
   search(){
-    this.router.navigate(['/home/search/'+this.searchbarForm.value.searchTerm])
+    if(this.switch){
+      this.switch=false
+    }
+    else{
+      this.switch=true
+    }
   }
 }
