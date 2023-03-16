@@ -19,6 +19,7 @@ export class HomeComponent {
   userData:any
   searchResults:any
   popularMovies:Array<any>=[]
+  switch:boolean | undefined
 
   searchbarForm=new FormGroup({
     searchTerm: new FormControl()
@@ -44,34 +45,7 @@ export class HomeComponent {
       
     })
 
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-
-    this.http.get("http://localhost:9000/getMovieById/64047202b305f319df7b1c87").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640475a2ca0ff1f87c2bd76e").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
-
-    this.http.get("http://localhost:9000/getMovieById/640363d4cf69eef03a794892").subscribe(resp=>{
-      this.popularMovies.push(resp);
-    })
+    
 
 
 
@@ -84,6 +58,11 @@ export class HomeComponent {
   }
 
   search(){
-    this.router.navigate(['/home/search/'+this.searchbarForm.value.searchTerm])
+    if(this.switch){
+      this.switch=false
+    }
+    else{
+      this.switch=true
+    }
   }
 }
