@@ -12,6 +12,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { WatchlistComponent } from './home/watchlist/watchlist.component';
 import { FeedComponent } from './home/feed/feed.component';
 import { FavoritesComponent } from './home/favorites/favorites.component';
+import { MovieComponent } from './movie/movie.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FavoritesComponent } from './home/favorites/favorites.component';
     WatchlistComponent,
     SearchResultsComponent,
     FeedComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
