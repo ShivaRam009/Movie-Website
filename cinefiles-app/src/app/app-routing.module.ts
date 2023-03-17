@@ -1,3 +1,4 @@
+import { MovieComponent } from './home/movie/movie.component';
 import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         component:FavoritesComponent,
         path:'favorites'
+      },
+      {
+        component:MovieComponent,
+        path:'movie/:id'
       }
     ]
   },
