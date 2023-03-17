@@ -46,22 +46,19 @@
     </form>
 </div>
 
+<app-feed *ngIf="this.router.url=='/home'"></app-feed>
 
+<router-outlet *ngIf="this.router.url.includes('/movie')"></router-outlet>
 
-
+<div *ngIf="this.router.url=='/home/search'">
+    <app-search-results [toggle]="this.switch"></app-search-results>
+</div>
 
 
 <div *ngIf="this.router.url=='/home/watchlist'">
     <app-watchlist></app-watchlist>
 </div>
 
-<div *ngIf="this.router.url=='/home/search'">
-    <app-search-results [toggle]="this.switch"></app-search-results>
-</div>
-
-<div *ngIf="this.router.url=='/home'">
-    <app-feed></app-feed>
-</div>
 
 <div *ngIf="this.router.url=='/home/favorites'">
     <app-favorites></app-favorites>

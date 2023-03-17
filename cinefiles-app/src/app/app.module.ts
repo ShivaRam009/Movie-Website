@@ -6,12 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import {HttpClientModule} from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { WatchlistComponent } from './home/watchlist/watchlist.component';
 import { FeedComponent } from './home/feed/feed.component';
 import { FavoritesComponent } from './home/favorites/favorites.component';
+import { MovieComponent } from './home/movie/movie.component';
 
 
 @NgModule({
@@ -23,14 +24,16 @@ import { FavoritesComponent } from './home/favorites/favorites.component';
     WatchlistComponent,
     SearchResultsComponent,
     FeedComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+
     
   ],
   providers: [],
