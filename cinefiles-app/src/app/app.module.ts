@@ -13,6 +13,7 @@ import { WatchlistComponent } from './home/watchlist/watchlist.component';
 import { FeedComponent } from './home/feed/feed.component';
 import { FavoritesComponent } from './home/favorites/favorites.component';
 import { MovieComponent } from './home/movie/movie.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MovieComponent } from './home/movie/movie.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    NgbModule,
 
     
   ],
