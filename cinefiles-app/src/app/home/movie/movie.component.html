@@ -1,15 +1,76 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 <div>
-    <div>
-        <div class="float-left">
-            <img src="{{movieData.poster}}" alt="" class="h-80 w-64 p-3">
+    <div class="flex">
+        <div >
+            <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
         </div>
         <div class="p-3">
-            <p class="font-bold text-2xl">{{movieData.name}} <span class="text-sm font-medium italic">{{movieData.release.substring(0,4)}}</span></p>
-            <p class="italic">Directed by {{movieData.directors}}</p>
-            <p class="italic">Starring {{movieData.cast}}</p>
-            <br>
-            <p class="text-l" id="plot">{{movieData.description}}</p>
+            <p class="font-bold text-2xl p-1 ">{{movieData.name}} <span class="text-sm font-medium italic ">{{movieData.release.substring(0,4)}}</span></p>
+            <hr class=" p-2">
+            <p class="font-bold text-lg p-1">Director <span class=" font-normal text-lg pl-3">{{movieData.directors}}</span> </p>
+            <p class="font-bold text-lg p-1">Writer <span class=" font-normal pl-3 text-lg">{{movieData.writers}}</span> </p> 
+            <p class="font-bold text-lg p-1">Cast <span class=" font-normal pl-3 text-lg">{{movieData.cast}}</span> </p>
+            <p class="font-bold text-lg p-1">Language <span class=" font-normal pl-3 text-lg">{{movieData.language}}</span> </p>     
+            <p class="font-bold text-lg p-1">Type <span class=" font-normal pl-3 text-lg">{{movieData.type}}</span> </p> 
+            <div *ngIf="this.movieData.type=='series'">
+                <p class="font-bold text-xl p-1">Seasons <span class=" font-normal pl-3 text-lg">{{movieData.seasons}}</span> </p>
+            </div>
+            <p class="font-bold text-lg p-1">Genres <span class=" font-normal pl-3 text-lg">{{movieData.genres}}</span> </p> 
+            <p class="font-bold text-lg p-1">Plot </p>
+            <p class="text-lg p-1 " id="plot">{{movieData.description}}</p>
+            <div class="border-4 border-black w-fit p-3">
+                <p class="text-center text-lg">Rate the movie</p>
+                <ngb-rating class="text-5xl"></ngb-rating>
+            </div>
+            
+            <!-- <div class="container ml-80">
+                <div class="star-widget">
+                    <p class="text-center">Rate the movie</p>
+                    <form action="">
+                        <input type="radio" name="rate" id="rate-10">
+                        <label for="rate-10" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-9">
+                        <label for="rate-9" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-8">
+                        <label for="rate-8" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-7">
+                        <label for="rate-7" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-6">
+                        <label for="rate-6" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-5">
+                        <label for="rate-5" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-4">
+                        <label for="rate-4" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-3">
+                        <label for="rate-3" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-2">
+                        <label for="rate-2" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-1">
+                        <label for="rate-1" class="fas fa-star"></label>
+                    </form>
+                </div>
+            </div> -->
         </div>
+        
     </div>
+
 </div>
+    <!-- <script>
+    const btn = document.querySelector("button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".star-widget");
+    const editBtn = document.querySelector(".edit");
+    btn.onclick = ()=>{
+        widget.style.display = "none";
+        post.style.display = "block";
+        editBtn.onclick = ()=>{
+        widget.style.display = "block";
+        post.style.display = "none";
+        }
+        return false;
+    }
+    </script> -->
+
 

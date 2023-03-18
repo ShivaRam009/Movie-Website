@@ -40,8 +40,8 @@ export class SearchResultsComponent implements OnChanges {
   ngOnInit(){
     if(this.term==""){
       this.noResults=true
-    }
-  }
+    }
+  }
 
 
 
