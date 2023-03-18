@@ -1,15 +1,25 @@
 <div>
     <div>
         <div class="float-left">
-            <img src="{{movieData.poster}}" alt="" class="h-80 w-64 p-3">
+            <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
         </div>
-        <div class="p-3">
-            <p class="font-bold text-2xl">{{movieData.name}} <span class="text-sm font-medium italic">{{movieData.release.substring(0,4)}}</span></p>
-            <p class="italic">Directed by {{movieData.directors}}</p>
-            <p class="italic">Starring {{movieData.cast}}</p>
-            <br>
-            <p class="text-l" id="plot">{{movieData.description}}</p>
-        </div>
+        <div class="p-3 ml-80">
+            <p class="font-bold text-2xl p-2 ">{{movieData.name}} <span class="text-sm font-medium italic ">{{movieData.release.substring(0,4)}}</span></p>
+            <hr class=" p-2">
+            <p class="font-bold text-xl p-2">Director <span class=" font-normal text-xl pl-3">{{movieData.directors}}</span> </p>
+            <p class="font-bold text-xl p-2">Writer <span class=" font-normal pl-3">{{movieData.writers}}</span> </p> 
+            <p class="font-bold text-xl p-2">Cast <span class=" font-normal pl-3">{{movieData.cast}}</span> </p>
+            <p class="font-bold text-xl p-2">Language <span class=" font-normal pl-3">{{movieData.language}}</span> </p>     
+            <p class="font-bold text-xl p-2">Type <span class=" font-normal pl-3">{{movieData.type}}</span> </p> 
+            <div *ngIf="this.movieData.type=='series'">
+                <p class="font-bold text-xl p-2">Seasons <span class=" font-normal pl-3">{{movieData.seasons}}</span> </p>
+            </div>
+            <p class="font-bold text-xl p-2">Genres <span class=" font-normal pl-3">{{movieData.genres}}</span> </p> 
+            <p class="font-bold text-xl p-2">Plot </p>
+            <p class="text-l p-2" id="plot">{{movieData.description}}</p>
+
+            
+  
     </div>
 </div>
 
