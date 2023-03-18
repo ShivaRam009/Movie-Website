@@ -13,11 +13,13 @@ export class MovieComponent {
     }
     movieId:any=""
     movieData:any
+    type:string=""
 
     ngOnInit(){
       this.movieId=this.route.snapshot.paramMap.get('id')
       this.http.get("http://localhost:9000/getMovieById/"+this.movieId).subscribe(resp=>{
         this.movieData=resp
+        this.type=this.movieData.type
       })
     }
 }
