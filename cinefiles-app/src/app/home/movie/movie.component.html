@@ -1,25 +1,69 @@
-<div>
-    <div>
-        <div class="float-left">
-            <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
-        </div>
-        <div class="p-3 ml-80">
-            <p class="font-bold text-2xl p-2 ">{{movieData.name}} <span class="text-sm font-medium italic ">{{movieData.release.substring(0,4)}}</span></p>
-            <hr class=" p-2">
-            <p class="font-bold text-xl p-2">Director <span class=" font-normal text-xl pl-3">{{movieData.directors}}</span> </p>
-            <p class="font-bold text-xl p-2">Writer <span class=" font-normal pl-3">{{movieData.writers}}</span> </p> 
-            <p class="font-bold text-xl p-2">Cast <span class=" font-normal pl-3">{{movieData.cast}}</span> </p>
-            <p class="font-bold text-xl p-2">Language <span class=" font-normal pl-3">{{movieData.language}}</span> </p>     
-            <p class="font-bold text-xl p-2">Type <span class=" font-normal pl-3">{{movieData.type}}</span> </p> 
-            <div *ngIf="this.movieData.type=='series'">
-                <p class="font-bold text-xl p-2">Seasons <span class=" font-normal pl-3">{{movieData.seasons}}</span> </p>
-            </div>
-            <p class="font-bold text-xl p-2">Genres <span class=" font-normal pl-3">{{movieData.genres}}</span> </p> 
-            <p class="font-bold text-xl p-2">Plot </p>
-            <p class="text-l p-2" id="plot">{{movieData.description}}</p>
 
-            
-  
-    </div>
-</div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <div>
+        <div>
+            <div class="float-left">
+                <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
+            </div>
+            <div class="p-3 ml-80">
+                <p class="font-bold text-2xl p-2 ">{{movieData.name}} <span class="text-sm font-medium italic ">{{movieData.release.substring(0,4)}}</span></p>
+                <hr class=" p-2">
+                <p class="font-bold text-xl p-2">Director <span class=" font-normal text-xl pl-3">{{movieData.directors}}</span> </p>
+                <p class="font-bold text-xl p-2">Writer <span class=" font-normal pl-3">{{movieData.writers}}</span> </p> 
+                <p class="font-bold text-xl p-2">Cast <span class=" font-normal pl-3">{{movieData.cast}}</span> </p>
+                <p class="font-bold text-xl p-2">Language <span class=" font-normal pl-3">{{movieData.language}}</span> </p>     
+                <p class="font-bold text-xl p-2">Type <span class=" font-normal pl-3">{{movieData.type}}</span> </p> 
+                <div *ngIf="this.movieData.type=='series'">
+                    <p class="font-bold text-xl p-2">Seasons <span class=" font-normal pl-3">{{movieData.seasons}}</span> </p>
+                </div>
+                <p class="font-bold text-xl p-2">Genres <span class=" font-normal pl-3">{{movieData.genres}}</span> </p> 
+                <p class="font-bold text-xl p-2">Plot </p>
+                <p class="text-l p-2" id="plot">{{movieData.description}}</p>
+        </div>
+        </div>
+        <div class="container">
+        <div class="post">
+            <div class="text">Thanks for rating us!</div>
+            <div class="edit">EDIT</div>
+        </div>
+        <div class="star-widget">
+            <input type="radio" name="rate" id="rate-5">
+            <label for="rate-5" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-4">
+            <label for="rate-4" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-3">
+            <label for="rate-3" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-2">
+            <label for="rate-2" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-1">
+            <label for="rate-1" class="fas fa-star"></label>
+            <form action="#">
+            <header></header>
+            <div class="textarea">
+                <textarea cols="30" placeholder="Describe your experience.."></textarea>
+            </div>
+            <div class="btn">
+                <button type="submit">Post</button>
+            </div>
+            </form>
+        </div>
+        </div>
+        <script>
+        const btn = document.querySelector("button");
+        const post = document.querySelector(".post");
+        const widget = document.querySelector(".star-widget");
+        const editBtn = document.querySelector(".edit");
+        btn.onclick = ()=>{
+            widget.style.display = "none";
+            post.style.display = "block";
+            editBtn.onclick = ()=>{
+            widget.style.display = "block";
+            post.style.display = "none";
+            }
+            return false;
+        }
+        </script>
+
+
 
