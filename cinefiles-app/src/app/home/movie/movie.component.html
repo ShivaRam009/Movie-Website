@@ -2,7 +2,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <div>
-<<<<<<< HEAD
         <div>
             <div class="float-left">
                 <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
@@ -66,24 +65,5 @@
         }
         </script>
 
-=======
-        <div class="float-left">
-            <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
-        </div>
-        <div class="p-3 ml-80">
-            <p class="font-bold text-2xl p-2 ">{{movieData.name}} <span class="text-sm font-medium italic ">{{movieData.release.substring(0,4)}}</span></p>
-            <hr class=" p-2">
-            <p class="font-bold text-xl p-2 "> <span class="decoration-[#fcc139] underline decoration-4">Director</span>  <span class=" font-normal pl-3 text-lg">{{movieData.directors}}</span> </p>
-            <p class="font-bold text-xl p-2"> <span class="decoration-[#fcc139] underline decoration-4">Writer</span> <span class=" font-normal pl-3 text-lg">{{movieData.writers}}</span> </p> 
-            <p class="font-bold text-xl p-2"> <span class="decoration-[#fcc139] underline decoration-4">Cast</span> <span class=" font-normal pl-3 text-lg">{{movieData.cast}}</span> </p>
-            <p class="font-bold text-xl p-2"> <span class="decoration-[#fcc139] underline decoration-4">Language</span> <span class=" font-normal pl-3 text-lg">{{movieData.language}}</span> </p>     
-            <p class="font-bold text-xl p-2"> <span class="decoration-[#fcc139] underline decoration-4">Type</span> <span class=" font-normal pl-3 text-lg">{{movieData.type}}</span> </p> 
-            <div *ngIf="this.movieData.type=='series'">
-                <p class="font-bold text-xl p-2"> <span class="decoration-[#fcc139] underline decoration-4">Seasons</span> <span class=" font-normal pl-3 text-lg">{{movieData.seasons}}</span> </p>
-            </div>
-            <p class="font-bold text-xl p-2"> <span class="decoration-[#fcc139] underline decoration-4">Genres</span> <span class=" font-normal pl-3 text-lg">{{movieData.genres}}</span> </p> 
-            <p class="font-bold text-xl p-2"><span class="decoration-[#fcc139] underline decoration-4">Plot</span> </p>
-            <p class="text-l p-2 text-xl" id="plot">{{movieData.description}}</p>
->>>>>>> c432066291370910a4bcbe880738fd1a2fc53cc5
 
 

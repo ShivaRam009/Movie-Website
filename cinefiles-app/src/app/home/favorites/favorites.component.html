@@ -1,4 +1,4 @@
-<div class="flex flex-col p-3 items-center" *ngIf="this.movies.length!=0">
+<!--<div class="flex flex-col p-3 items-center" *ngIf="this.movies.length!=0">
     <div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4">FAVORITES</div>
     <div class="p-4">
         <div class="grid grid-cols-5 justify-around gap-5">
@@ -10,6 +10,23 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<div class="text-lg  text-center text-black font-semibold underline decoration-[#fcc139] decoration-4" *ngIf="this.movies.length==0">NO FAVORITES FOUND</div>
+
+<body >
+    <div class="flex flex-col p-3 items-center min-h-screen bg-gray-800">
+        <div class="text-lg text-center text-[#FFFFFF] font-semibold">FAVORITES</div>
+        <div class="p-4">
+            <div class="grid grid-cols-5 justify-around gap-5 text-[#FFFFFF] font-semibold">
+                <div *ngFor="let movie of this.movies">
+                    <div class="">
+                        <img src={{movie.poster}} alt="" class="h-72 w-56  border-white border rounded-md" routerLink="movie/{{movie._id}}">
+                        <p class="font-semibold text-center">{{this.movie.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<div class="text-lg  text-center text-[#FFFFFF] font-semibold " *ngIf="this.movies.length==0">NO FAVORITES FOUND</div>
