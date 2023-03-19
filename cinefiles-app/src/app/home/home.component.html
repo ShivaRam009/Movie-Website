@@ -27,7 +27,7 @@
         <div class="p-1 text-white text-sm relative font-bold">
             <button class="dropdown" id="username">
                 {{this.userData.username}}
-                <div class="dropdown-content bg-[#000000] p-2">
+                <div class="dropdown-content bg-[#000000] p-3">
                     <a class="profile ">PROFILE</a>
                     <br>
                     <hr>
@@ -36,6 +36,7 @@
             </button>
         </div>
     </div>
+
 </div>
 
 <app-feed *ngIf="this.router.url=='/home'"></app-feed>
