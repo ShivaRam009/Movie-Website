@@ -1,3 +1,4 @@
+import { HomeComponent } from './../home.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent {
-    constructor(private http:HttpClient,private route:ActivatedRoute,public router:Router){
+    constructor(private http:HttpClient,private route:ActivatedRoute,public router:Router, public home:HomeComponent){
 
     }
     movieId:any=""
