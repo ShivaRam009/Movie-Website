@@ -65,4 +65,8 @@ export class HomeComponent {
       this.switch=true
     }
   }
+
+  handleKeyUp(){
+    this.search();
+  }
 }
