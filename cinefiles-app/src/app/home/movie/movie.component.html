@@ -7,7 +7,24 @@
 <div class="bg-gray-800 text-white min-h-screen">
     <div class="flex">
         <div >
-            <img src="{{movieData.poster}}" alt="" class="h-96 w-80 p-3">
+            <img src="{{movieData.poster}}" alt="" class="h-96 max-w-lg p-3 mt-2">
+            <div class="mt-0 flex justify-around">
+                <div *ngIf="this.home.userData.movies_liked.includes(movieData._id) else elseBlock">
+                    <i class="fa-solid fa-heart text-4xl hover:cursor-pointer"></i>
+                </div>
+                <ng-template #elseBlock>
+                    <i class="fa-regular fa-heart text-4xl hover:cursor-pointer" ></i>
+                </ng-template>
+                <div *ngIf="this.home.userData.watchlist.includes(movieData._id) else elseBlock2">
+                    <i class="fa-solid fa-clock text-4xl hover:cursor-pointer"></i>
+                </div>
+                <ng-template #elseBlock2>
+                    <i class="fa-regular fa-clock text-4xl hover:cursor-pointer"></i> 
+                </ng-template>
+                   
+                <i class="fa-solid fa-share-nodes text-4xl hover:cursor-pointer"></i>
+            </div>
+            
         </div>
         <div class="p-3">
             <p class="font-bold text-2xl p-1 ">{{movieData.name}} <span class="text-sm font-medium italic ">{{movieData.release.substring(0,4)}}</span></p>
@@ -45,21 +62,3 @@
     </div>
 
 </div>
-    <!-- <script>
-    const btn = document.querySelector("button");
-    const post = document.querySelector(".post");
-    const widget = document.querySelector(".star-widget");
-    const editBtn = document.querySelector(".edit");
-    btn.onclick = ()=>{
-        widget.style.display = "none";
-        post.style.display = "block";
-        editBtn.onclick = ()=>{
-        widget.style.display = "block";
-        post.style.display = "none";
-        }
-        return false;
-    }
-
-    </script> 
-
-
