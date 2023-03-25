@@ -10,16 +10,16 @@
             <img src="{{movieData.poster}}" alt="" class="h-96 max-w-lg p-3 mt-2">
             <div class="mt-0 flex justify-around">
                 <div *ngIf="this.home.userData.movies_liked.includes(movieData._id) else elseBlock">
-                    <i class="fa-solid fa-heart text-4xl hover:cursor-pointer"></i>
+                    <i class="fa-solid fa-heart text-4xl hover:cursor-pointer"  #likeButton (click)="like()"></i>
                 </div>
                 <ng-template #elseBlock>
-                    <i class="fa-regular fa-heart text-4xl hover:cursor-pointer" ></i>
+                    <i class="fa-regular fa-heart text-4xl hover:cursor-pointer likeButton" #likeButton (click)="like()"></i>                    
                 </ng-template>
                 <div *ngIf="this.home.userData.watchlist.includes(movieData._id) else elseBlock2">
-                    <i class="fa-solid fa-clock text-4xl hover:cursor-pointer"></i>
+                    <i class="fa-solid fa-clock text-4xl hover:cursor-pointer" #watchlistButton (click)="changeWatchlist()"></i>
                 </div>
                 <ng-template #elseBlock2>
-                    <i class="fa-regular fa-clock text-4xl hover:cursor-pointer"></i> 
+                    <i class="fa-regular fa-clock text-4xl hover:cursor-pointer" #watchlistButton (click)="changeWatchlist()"></i> 
                 </ng-template>
                    
                 <i class="fa-solid fa-share-nodes text-4xl hover:cursor-pointer"></i>
@@ -43,7 +43,13 @@
                 </div>
                 <div class="mr-40 text-3xl font-bold ">
                     <div class="underline underline-offset-4 decoration-3">Rating</div>
-                    <div class="text-center">{{movieData.avgRating}}/10</div>
+                    <div *ngIf="this.movieData.avgRating==null else elseBlock3">
+                        <div class="text-center">N/A</div>
+                    </div>
+                    <ng-template #elseBlock3>
+                        <div class="text-center">{{movieData.avgRating}}/10</div>
+                    </ng-template>
+                    
                 </div>
             </div>
             <p class="font-bold text-lg p-1">Plot </p>
@@ -64,3 +70,30 @@
 </div>
 
 
+<!-- <script>
+    console.log("hello")
+    d=document.getElementsByClassName("flex")
+    console.log(d)
+    likeButton = document.getElementsByClassName("likeButton");
+    console.log(likeButton.innerHTML)
+    likeButton.onclick = function(){
+        // if(likeButton.classList.contains("fa-regular")){
+        //     likeButton.classList.remove("fa-regular");
+        //     likeButton.classList.add("fa-solid");
+        // }
+        // else{
+        //     likeButton.classList.remove("fa-solid");
+        //     likeButton.classList.add("fa-regular");
+        // }
+
+        console.log("clicked")
+
+        if(likeButton.innerHTML=="Like"){
+            likeButton.innerHTML="Liked";
+        }
+        else{
+            likeButton.innerHTML="Like";
+        }
+    }
+
+</script> -->
