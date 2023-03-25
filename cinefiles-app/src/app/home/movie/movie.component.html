@@ -54,11 +54,25 @@
                 <p class="text-center text-lg">Rate the movie</p>
 
                 <ngb-rating class="text-5xl"></ngb-rating>
+                
 
             </div>
-
+            <br>
+            <div class="font-bold text-lg p-1">Reviews</div>
+                <div *ngFor="let review of this.reviews">
+                    <div class="border border-white border-radius:1rem">
+                        <div class="p-2">reviewed by </div>
+                        <div class="flex">
+                            <div class="p-3">{{review.review}}</div>
+                            <div class="flex">
+                                <div><i class="fa-solid fa-heart text-2xl pt-3 pl-3"></i></div>
+                                <div class="pt-3 text-sm">{{review.likes}}</div>
+                            </div>
+                            <i class="fa-regular fa-comment text-2xl p-3"></i>
+                        </div>
+                    </div>
+                    
+                </div>
         </div>
-        
     </div>
-
 </div>

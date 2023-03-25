@@ -15,12 +15,19 @@ export class MovieComponent {
     movieId:any=""
     movieData:any
     type:string=""
+    reviews:Array<any>=[]
 
     ngOnInit(){
       this.movieId=this.route.snapshot.paramMap.get('id')
       this.http.get("http://localhost:9000/getMovieById/"+this.movieId).subscribe(resp=>{
         this.movieData=resp
         this.type=this.movieData.type
+        for(let i of this.movieData.reviews){
+          this.http.get("http://localhost:9000/getReviewById/"+i.reviewId).subscribe(resp=>{
+            console.log(resp)
+            this.reviews.push(resp)
+          })
+        }
       })
     }
 }
