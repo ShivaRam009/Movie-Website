@@ -1,17 +1,4 @@
 
-<!--<div class="flex flex-col p-3 items-center" *ngIf="!this.noResults">
-    <div class="text-lg  text-center text-[black] font-semibold underline decoration-[#fcc139] decoration-4">RESULTS</div>
-    <div class="p-4">
-        <div class="grid grid-cols-5 justify-around gap-5">
-            <div *ngFor="let movie of this.searchResults">
-                <div class="" >
-                    <img src={{movie.poster}} alt="" class="h-72 w-56 hover:border-4 border-[#1f4489]" routerLink="movie/{{movie._id}}">
-                    <p class="font-semibold text-center">{{this.movie.name}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
 
     <div class="flex flex-col p-3 items-center min-h-screen bg-gray-800" *ngIf="!this.noResults">
         <div class="text-lg text-center text-[#FFFFFF] font-semibold">RESULTS</div>
@@ -19,7 +6,7 @@
             <div class="grid grid-cols-5 justify-around gap-5 text-[#FFFFFF] font-semibold">
                 <div *ngFor="let movie of this.searchResults">
                     <div class="">
-                        <img src={{movie.poster}} alt="" class="h-72 w-56  border-white border rounded-md" routerLink="movie/{{movie._id}}">
+                        <img src={{movie.poster}} alt="" class="h-72 w-56  border-white border rounded-md hover:brightness-125" routerLink="movie/{{movie._id}}">
                         <p class="font-semibold text-center">{{this.movie.name}}</p>
                     </div>
                 </div>

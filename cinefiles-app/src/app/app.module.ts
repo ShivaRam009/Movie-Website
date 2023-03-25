@@ -14,10 +14,6 @@ import { FeedComponent } from './home/feed/feed.component';
 import { FavoritesComponent } from './home/favorites/favorites.component';
 import { MovieComponent } from './home/movie/movie.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {ShareButtonsModule} from 'ngx-sharebuttons/buttons';
-import {ShareIconsModule} from 'ngx-sharebuttons/icons';
-import { ShareModule } from 'ngx-sharebuttons';
-
 
 
 @NgModule({
@@ -39,9 +35,6 @@ import { ShareModule } from 'ngx-sharebuttons';
     HttpClientModule,
     RouterModule,
     NgbModule,
-    ShareButtonsModule,
-    ShareIconsModule,
-    ShareModule
 
     
   ],
