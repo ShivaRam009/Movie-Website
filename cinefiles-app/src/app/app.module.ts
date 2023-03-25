@@ -13,6 +13,11 @@ import { WatchlistComponent } from './home/watchlist/watchlist.component';
 import { FeedComponent } from './home/feed/feed.component';
 import { FavoritesComponent } from './home/favorites/favorites.component';
 import { MovieComponent } from './home/movie/movie.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ShareButtonsModule} from 'ngx-sharebuttons/buttons';
+import {ShareIconsModule} from 'ngx-sharebuttons/icons';
+import { ShareModule } from 'ngx-sharebuttons';
+
 
 
 @NgModule({
@@ -25,7 +30,7 @@ import { MovieComponent } from './home/movie/movie.component';
     SearchResultsComponent,
     FeedComponent,
     FavoritesComponent,
-    MovieComponent
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +38,10 @@ import { MovieComponent } from './home/movie/movie.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    NgbModule,
+    ShareButtonsModule,
+    ShareIconsModule,
+    ShareModule
 
     
   ],

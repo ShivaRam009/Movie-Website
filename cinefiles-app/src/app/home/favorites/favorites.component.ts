@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { HomeComponent } from '../home.component';
+
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',

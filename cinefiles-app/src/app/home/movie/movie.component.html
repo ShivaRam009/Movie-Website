@@ -13,6 +13,7 @@
             <p class="font-bold text-lg p-1">Cast <span class=" font-normal pl-3 text-lg">{{movieData.cast}}</span> </p>
             <p class="font-bold text-lg p-1">Language <span class=" font-normal pl-3 text-lg">{{movieData.language}}</span> </p>     
             <p class="font-bold text-lg p-1">Type <span class=" font-normal pl-3 text-lg">{{movieData.type}}</span> </p> 
+
             <div *ngIf="this.movieData.type=='series'">
                 <p class="font-bold text-xl p-1">Seasons <span class=" font-normal pl-3 text-lg">{{movieData.seasons}}</span> </p>
             </div>
@@ -21,8 +22,10 @@
             <p class="text-lg p-1 " id="plot">{{movieData.description}}</p>
             <div class="border-4 border-black w-fit p-3">
                 <p class="text-center text-lg">Rate the movie</p>
-                <!--<ngb-rating class="text-5xl"></ngb-rating>-->
+                <ngb-rating class="text-5xl"></ngb-rating>
             </div>
+
+            
             
             <!-- <div class="container ml-80">
                 <div class="star-widget">
