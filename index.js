@@ -179,7 +179,7 @@ app.put("/unlikeMovie/:movieId/:username",(req,res)=>{
 
 
 
-app.post("/watchlist/:movieid/:username",(req,res)=>{
+app.put("/watchlist/:movieid/:username",(req,res)=>{
     id=req.params.movieid
     username=req.params.username
     queries.watchList(id,username).then(response=>{
