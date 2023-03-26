@@ -24,5 +24,4 @@ export class MovieComponent {
       })
     }
 
-    name='ngx-sharebuttons'
 }
