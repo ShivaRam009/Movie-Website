@@ -49,12 +49,12 @@
 
 
 <div *ngIf="this.router.url=='/home/watchlist'">
-    <app-watchlist></app-watchlist>
+    <app-watchlist ></app-watchlist>
 </div>
 
 
-<div *ngIf="this.router.url=='/home/favorites'">
-    <app-favorites></app-favorites>
+<div *ngIf="this.router.url=='/home/favorites'" >
+    <app-favorites [toggle]="likeSwitch"></app-favorites>
 </div>
 
 

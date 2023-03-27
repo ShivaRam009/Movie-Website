@@ -32,6 +32,7 @@ export class MovieComponent {
       this.likeButton.nativeElement.classList.remove("fa-regular")
       this.http.put("http://localhost:9000/likes/"+this.movieData._id+"/"+this.home.userData.username,{}).subscribe(resp=>{
         console.log(resp)
+        this.home.likeToggle()
       })
       this.likeButton.nativeElement.classList.add("fa-solid")
       
@@ -41,9 +42,11 @@ export class MovieComponent {
       this.http.put("http://localhost:9000/unlikeMovie/"+this.movieData._id+"/"+this.home.userData.username,{}).subscribe(resp=>{
         console.log("ds"+this.home.userData.username)
         console.log(resp)
+        this.home.likeToggle()
       })
       this.likeButton.nativeElement.classList.add("fa-regular")
     }
+    
   }
 
   changeWatchlist(){
