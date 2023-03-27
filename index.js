@@ -305,6 +305,13 @@ app.get("/searchMovie/:movieName",(req,res)=>{
     })
 })
 
+app.get("/getUserByUserid/:userid",(req,res)=>{
+    userid=req.params.userid
+    queries.getUserByUserId(userid).then(response=>{
+        res.send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
