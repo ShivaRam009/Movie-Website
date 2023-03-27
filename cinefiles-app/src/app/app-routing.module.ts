@@ -1,3 +1,4 @@
+import { Refresh1Component } from './home/refresh1/refresh1.component';
 import { MovieComponent } from './home/movie/movie.component';
 import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { LandingComponent } from './landing/landing.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         component:MovieComponent,
         path:'movie/:id'
+      },
+      {
+        component:Refresh1Component,
+        path:'refresh1'
       }
     ]
   },
@@ -44,6 +49,7 @@ const routes: Routes = [
     component:RegistrationPageComponent,
     path:'registration'
   },
+
  
 ];
 

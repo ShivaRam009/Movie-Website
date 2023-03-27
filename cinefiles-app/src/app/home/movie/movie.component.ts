@@ -1,7 +1,7 @@
 import { HomeComponent } from './../home.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-movie',
@@ -32,10 +32,23 @@ export class MovieComponent {
           "userdata": this.user,
           "reviewdata": this.review
         };
-        this.moviereviews.push(this.temp);
+        this.moviereviews.splice(0,0,this.temp)
       }
     }
-    
+
+    // async ngOnChanges(changes:SimpleChanges):Promise<void>{
+    //   this.movieId = this.route.snapshot.paramMap.get('id');
+    //   this.movieData = await this.http.get("http://localhost:9000/getMovieById/" + this.movieId).toPromise();    
+    //   for (let i of this.movieData.reviews) {
+    //     this.user = await this.http.get("http://localhost:9000/getUserByUserId/" + i.userId).toPromise();
+    //     this.review = await this.http.get("http://localhost:9000/getReviewById/" + i.reviewId).toPromise();
+    //     this.temp = {
+    //       "userdata": this.user,
+    //       "reviewdata": this.review
+    //     };
+    //     this.moviereviews.splice(0,0,this.temp)
+    //   }
+    // }
       addLike(id:string){
         this.http.put("http://localhost:9000/likeReview/"+this.home.userData.username+"/"+id,this.http).subscribe(resp=>{
           console.log(resp)
@@ -47,6 +60,11 @@ export class MovieComponent {
         this.temp={"review":reveiwstring}
         this.http.post("http://localhost:9000/addReview/"+this.home.userData.username+"/"+this.movieData._id,this.temp).subscribe(resp=>{
           console.log("review added")
+          
+          //refreshing the page
+          this.router.navigateByUrl('home/refresh1', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/home/movie/'+this.movieData._id]);
+        }); 
         })
       }
 
@@ -56,6 +74,7 @@ export class MovieComponent {
       this.likeButton.nativeElement.classList.remove("fa-regular")
       this.http.put("http://localhost:9000/likes/"+this.movieData._id+"/"+this.home.userData.username,{}).subscribe(resp=>{
         console.log(resp)
+        this.home.likeToggle()
       })
       this.likeButton.nativeElement.classList.add("fa-solid")
       
@@ -65,9 +84,11 @@ export class MovieComponent {
       this.http.put("http://localhost:9000/unlikeMovie/"+this.movieData._id+"/"+this.home.userData.username,{}).subscribe(resp=>{
         console.log("ds"+this.home.userData.username)
         console.log(resp)
+        this.home.likeToggle()
       })
       this.likeButton.nativeElement.classList.add("fa-regular")
     }
+    
   }
 
   changeWatchlist(){

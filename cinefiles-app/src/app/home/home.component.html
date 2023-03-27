@@ -7,7 +7,7 @@
         <a class=" text-gray-300  hover:text-[#FFFFFF] text-sm font-bold cursor-pointer" routerLink='/home/watchlist'>WATCHLIST</a>
     </div>
     <div>
-        <a class=" text-gray-300 hover:text-[#FFFFFF] text-sm font-bold  cursor-pointer" routerLink='/home/favorites'>FAVOURITES</a>
+        <a class=" text-gray-300 hover:text-[#FFFFFF] text-sm font-bold  cursor-pointer" routerLink='/home/favorites' (click)="likeToggle()">FAVOURITES</a>
     </div>
     <div class=" text-gray-300 hover:text-[#FFFFFF] text-sm font-bold cursor-pointer">YOUR REVIEWS</div>
     <form action="" [formGroup]="searchbarForm"  (ngSubmit)="search()">
@@ -42,7 +42,11 @@
 
 <app-feed *ngIf="this.router.url=='/home'"></app-feed>
 
-<router-outlet *ngIf="this.router.url.includes('/movie')"></router-outlet>
+<router-outlet *ngIf="this.router.url.includes('/movie')"></router-outlet> <!--dynamic routing needs router outlet-->
+
+<!-- <div *ngIf="this.router.url.includes('/movie')">
+    <app-movie></app-movie>
+</div> -->
 
 <div *ngIf="this.router.url=='/home/search'">
     <app-search-results [toggle]="this.switch"></app-search-results>
@@ -50,10 +54,16 @@
 
 
 <div *ngIf="this.router.url=='/home/watchlist'">
-    <app-watchlist></app-watchlist>
+    <app-watchlist ></app-watchlist>
 </div>
 
 
 <div *ngIf="this.router.url=='/home/favorites'">
     <app-favorites></app-favorites>
 </div>
+
+
+
+
+
+

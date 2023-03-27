@@ -20,6 +20,7 @@ export class HomeComponent {
   searchResults:any
   popularMovies:Array<any>=[]
   switch:boolean | undefined
+  likeSwitch:boolean | undefined
 
   searchbarForm=new FormGroup({
     searchTerm: new FormControl()
@@ -63,6 +64,15 @@ export class HomeComponent {
     }
     else{
       this.switch=true
+    }
+  }
+
+  likeToggle(){
+    if(this.likeSwitch){
+      this.likeSwitch=false
+    }
+    else{
+      this.likeSwitch=true
     }
   }
 

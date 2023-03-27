@@ -14,8 +14,7 @@ import { FeedComponent } from './home/feed/feed.component';
 import { FavoritesComponent } from './home/favorites/favorites.component';
 import { MovieComponent } from './home/movie/movie.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
-import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { Refresh1Component } from './home/refresh1/refresh1.component';
 
 
 @NgModule({
@@ -29,6 +28,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     FeedComponent,
     FavoritesComponent,
     MovieComponent,
+    Refresh1Component,
+
   ],
   imports: [
     BrowserModule,
