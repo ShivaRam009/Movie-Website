@@ -17,14 +17,37 @@ export class MovieComponent {
     movieId:any=""
     movieData:any
     type:string=""
-
-    ngOnInit(){
-      this.movieId=this.route.snapshot.paramMap.get('id')
-      this.http.get("http://localhost:9000/getMovieById/"+this.movieId).subscribe(resp=>{
-        this.movieData=resp
-        this.type=this.movieData.type
-      })
-    }
+    user:any
+    review:any
+    temp:any
+    moviereviews:Array<any>=[]
+    emptyreview:String=""
+    async ngOnInit() {
+      this.movieId = this.route.snapshot.paramMap.get('id');
+      this.movieData = await this.http.get("http://localhost:9000/getMovieById/" + this.movieId).toPromise();    
+      for (let i of this.movieData.reviews) {
+        this.user = await this.http.get("http://localhost:9000/getUserByUserId/" + i.userId).toPromise();
+        this.review = await this.http.get("http://localhost:9000/getReviewById/" + i.reviewId).toPromise();
+        this.temp = {
+          "userdata": this.user,
+          "reviewdata": this.review
+        };
+        this.moviereviews.push(this.temp);
+      }
+      }
+      addLike(id:string){
+        this.http.put("http://localhost:9000/likeReview/"+this.home.userData.username+"/"+id,this.http).subscribe(resp=>{
+          console.log(resp)
+        })
+      }
+      addReview(reveiwstring:String){
+        console.log(reveiwstring)
+        console.log(this.home.userData.username)
+        this.temp={"review":reveiwstring}
+        this.http.post("http://localhost:9000/addReview/"+this.home.userData.username+"/"+this.movieData._id,this.temp).subscribe(resp=>{
+          console.log("review added")
+        })
+      }
 
     like(){
       console.log("this.likeButton.nativeElement.classList")
