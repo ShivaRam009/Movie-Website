@@ -141,7 +141,8 @@ async function addReview(username,movieId,review){
     movie.reviews.push({"userId":user._id,"reviewId":newReview._id})
     await user.save()
     await movie.save()
-    return [newReview,user,movie]
+    // return [newReview,user,movie]
+    return {message:"review posted"}
 }
 async function likes(movieid,username){
     const movie=await Movie.findById(movieid)
@@ -512,10 +513,17 @@ async function searchMovie(movie){
     return movies
 }
 
+async function getUserByUserId(userid){
+    const user=await User.findById(userid)
+    if(user!=null){
+        return user
+    }
+    return {"message":"User Not Found"}
+}
 
 
 
-
+module.exports.getUserByUserId=getUserByUserId
 module.exports.getUser=getUser
 module.exports.deleteUser=deleteUser
 module.exports.addUser = addUser
