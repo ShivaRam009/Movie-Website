@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Component,Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { HomeComponent } from '../home.component';
 @Component({
   selector: 'app-favorites',
@@ -8,11 +9,14 @@ import { HomeComponent } from '../home.component';
 })
 export class FavoritesComponent {
   @Input() toggle:boolean | undefined;
-  constructor(private home:HomeComponent,private http:HttpClient){
+constructor(private home:HomeComponent,private http:HttpClient,private router:Router){
 
   }
   movies:Array<any>=[];
   async ngOnInit(){
+    this.router.navigateByUrl('home/refresh1', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/home/favorites']);
+    }); 
     for(let i of this.home.userData.movies_liked){
       // this.http.get("http://localhost:9000/getMovieById/" + i).subscribe(async (resp) => {
       //   this.movies.push(resp);
@@ -22,7 +26,7 @@ export class FavoritesComponent {
     }
   }
 
-  // ngOnChanges(){
+  // ngOnChanges(changes:SimpleChanges){
   //   this.movies=[]
   //   for(let i of this.home.userData.movies_liked){
   //     this.http.get("http://localhost:9000/getMovieById/"+i).subscribe((resp)=>{
