@@ -34,7 +34,8 @@ export class MovieComponent {
         };
         this.moviereviews.push(this.temp);
       }
-      }
+    }
+    
       addLike(id:string){
         this.http.put("http://localhost:9000/likeReview/"+this.home.userData.username+"/"+id,this.http).subscribe(resp=>{
           console.log(resp)
