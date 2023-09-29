@@ -113,7 +113,7 @@ app.delete("/deleteUser/:username",(req,res)=>{
 app.get("/getMovieById/:id",(req,res)=>{
     ids=req.params.id
     console.log(ids)
-    queries.getMoviebyId(ids).then(response=>{
+    queries.getMoviebyId(ids    ).then(response=>{
         if(response=="Movie Not Found"){
             res.send({"message":response})
         }
@@ -256,7 +256,7 @@ app.put("/likeReview/:username/:reviewId",(req,res)=>{
     reviewId=req.params.reviewId
     queries.likeReview(username,reviewId).then(response=>{
         res.send({"message":response})
-    })
+})
 })
 
 
